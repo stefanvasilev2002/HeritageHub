@@ -18,8 +18,7 @@ public class CSVLoaderService {
     private final String CSV_FILE;
 
     public CSVLoaderService() {
-        CSV_FILE = "C:\\Users\\38978\\Desktop\\heritageHub\\src\\main\\resources\\final_data.csv";
-
+        CSV_FILE = "src/main/resources/final_data.csv";;
     }
 
     public List<Monument> loadMonumentsFromCsv() {

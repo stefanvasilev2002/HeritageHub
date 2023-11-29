@@ -2,16 +2,64 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Monuments</title>
+    <title>
+        <th:block th:if="${category == 'historical'}">Historical Monuments</th:block>
+        <th:block th:if="${category != 'historical'}">Cultural Monuments</th:block>
+    </title>
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-<h2>Monuments</h2>
-<ul>
-    <li th:each="monument : ${monuments}">
-        <a th:href="@{/monument/{id}(id=${monument.id})}">
-            <span th:text="${monument.name}"></span>
+<nav class="navbar navbar-expand-md">
+    <div class="container-xl">
+        <a href="/" class="navbar-brand">
+            <span class="fw-bold text-secondary">HeritageHub</span>
         </a>
-    </li>
-</ul>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
+            <ul class="navbar-nav nav-tabs mr-auto ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item" th:class="${category == 'historical'} ? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/category/historical}" th:class="${category == 'historical'} ? 'nav-link active' : 'nav-link'">Historical</a>
+                </li>
+                <li class="nav-item" th:class="${category != 'historical'} ? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/category/cultural}" th:class="${category != 'historical'} ? 'nav-link active' : 'nav-link'">Cultural</a>
+                </li>
+                <!-- Hidden "Contact" item for smaller screens -->
+                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- "Contact" button for larger screens -->
+        <a href="#" class="btn btn-secondary d-none d-md-block" id="contactButton">Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>
+        <th:block th:if="${category == 'historical'}">Historical Monuments</th:block>
+        <th:block th:if="${category != 'historical'}">Cultural Monuments</th:block>
+    </h2>
+
+    <div class="row">
+        <div th:each="monument : ${monuments}" class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${monument.name}"></h5>
+                    <p class="card-text">Latitude: <span th:text="${monument.latitude}"></span></p>
+                    <p class="card-text">Longitude: <span th:text="${monument.longitude}"></span></p>
+                    <a class="btn btn-primary" th:href="@{/monument/{id}(id=${monument.id})}">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/visibilityToggle.js"></script>
 </body>
 </html>

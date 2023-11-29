@@ -18,7 +18,8 @@ public class MonumentController {
     }
 
     @GetMapping("/")
-    public String showCategories() {
+    public String showCategories(Model model) {
+        model.addAttribute("monumentList", monumentService.getAllMonuments());
         return "categories";
     }
 
@@ -26,6 +27,7 @@ public class MonumentController {
     public String showMonumentsByCategory(@PathVariable String category, Model model) {
         List<Monument> monuments = monumentService.getAllMonumentsByCategory(category);
         model.addAttribute("monuments", monuments);
+        model.addAttribute("category",category);
         return "monuments";
     }
 
