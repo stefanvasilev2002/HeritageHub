@@ -33,4 +33,10 @@ public class MonumentService {
         List<Monument> monuments = csvLoaderService.loadMonumentsFromCsv();
         monumentRepository.saveAll(monuments);
     }
+
+    public List<Monument> getAllMonuments() {
+        List<Monument> monuments = getAllMonumentsByCategory("historical");
+        monuments.addAll(getAllMonumentsByCategory("cultural"));
+        return monuments;
+    }
 }
