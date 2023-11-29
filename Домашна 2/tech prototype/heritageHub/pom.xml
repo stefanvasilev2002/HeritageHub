@@ -8,7 +8,11 @@
         <version>3.2.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+<<<<<<< Updated upstream
     <groupId>mk.com.finki</groupId>
+=======
+    <groupId>com.finki</groupId>
+>>>>>>> Stashed changes
     <artifactId>heritageHub</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>heritageHub</name>
@@ -18,6 +22,14 @@
     </properties>
     <dependencies>
         <dependency>
+<<<<<<< Updated upstream
+=======
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+        </dependency>
+        <dependency>
+>>>>>>> Stashed changes
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
@@ -40,6 +52,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+<<<<<<< Updated upstream
+=======
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+>>>>>>> Stashed changes
     </dependencies>
 
     <build>

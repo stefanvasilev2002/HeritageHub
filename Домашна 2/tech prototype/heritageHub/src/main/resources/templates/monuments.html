@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Monuments</title>
+</head>
+<body>
+<h2>Monuments</h2>
+<ul>
+    <li th:each="monument : ${monuments}">
+        <a th:href="@{/monument/{id}(id=${monument.id})}">
+            <span th:text="${monument.name}"></span>
+        </a>
+    </li>
+</ul>
+</body>
+</html>
