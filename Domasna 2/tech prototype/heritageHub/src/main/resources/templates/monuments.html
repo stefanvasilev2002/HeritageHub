@@ -46,7 +46,14 @@
         <th:block th:if="${category == 'historical'}">Historical Monuments</th:block>
         <th:block th:if="${category != 'historical'}">Cultural Monuments</th:block>
     </h2>
-
+    <div class="search" th:ref="/search">
+        <form th:action="@{/category/search}" method="get">
+            <label for="searchQuery">Search</label>
+            <input id="searchQuery" name="searchQuery" type="text">
+            <input type="submit" value="Search">
+            <input type="hidden" th:value="${category}" name="category">
+        </form>
+    </div>
     <div class="row">
         <div th:each="monument : ${monuments}" class="col-md-4 mb-4">
             <div class="card">
