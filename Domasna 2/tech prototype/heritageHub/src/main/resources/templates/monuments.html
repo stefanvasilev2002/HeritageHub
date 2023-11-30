@@ -8,6 +8,7 @@
         <th:block th:if="${category != 'historical'}">Cultural Monuments</th:block>
     </title>
     <link rel="stylesheet" href="/main.css">
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
@@ -47,8 +48,6 @@
         <th:block th:if="${category == 'historical'}">Historical Monuments</th:block>
         <th:block th:if="${category != 'historical'}">Cultural Monuments</th:block>
     </h2>
-<<<<<<< Updated upstream
-=======
     <div class="search mt-4 p-3 border rounded">
         <form th:action="@{/category/search}" method="get">
             <div class="row align-items-center">
@@ -59,14 +58,12 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-secondary btn-block">Search</button>
+                    <button type="submit" class="btn btn-dark btn-block"><i class="bi bi-search"></i> Search</button>
                 </div>
                 <input type="hidden" th:value="${category}" name="category">
             </div>
         </form>
     </div>
->>>>>>> Stashed changes
-
     <div class="row">
         <div th:each="monument : ${monuments}" class="col-md-4 mb-4">
             <div class="card">

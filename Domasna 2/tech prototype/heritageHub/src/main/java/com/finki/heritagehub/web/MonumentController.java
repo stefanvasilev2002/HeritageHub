@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class MonumentController {
@@ -30,7 +32,17 @@ public class MonumentController {
         model.addAttribute("category",category);
         return "monuments";
     }
+    @GetMapping("/category/search")
+    public String searchByName(@RequestParam String searchQuery, @RequestParam String category, Model model) {
+        List<Monument> monuments = monumentService.getAllMonumentsByCategory(category);
+        monuments = monuments.stream()
+                .filter(x-> x.getName().toLowerCase().contains(searchQuery.toLowerCase()))
+                .collect(Collectors.toList());
 
+        model.addAttribute("monuments", monuments);
+        model.addAttribute("category", category);
+        return "monuments";
+    }
     @GetMapping("/monument/{id}")
     public String showMonumentDetails(@PathVariable Long id, Model model) {
         Monument monument = monumentService.getMonumentById(id);
