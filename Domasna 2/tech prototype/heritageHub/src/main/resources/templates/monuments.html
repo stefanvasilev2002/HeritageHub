@@ -8,6 +8,7 @@
         <th:block th:if="${category != 'historical'}">Cultural Monuments</th:block>
     </title>
     <link rel="stylesheet" href="/main.css">
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
@@ -42,16 +43,25 @@
 </nav>
 
 <div class="container">
-    <h2>
+
+    <h2 class="display-6">
         <th:block th:if="${category == 'historical'}">Historical Monuments</th:block>
         <th:block th:if="${category != 'historical'}">Cultural Monuments</th:block>
     </h2>
-    <div class="search" th:ref="/search">
+    <div class="search mt-4 p-3 border rounded">
         <form th:action="@{/category/search}" method="get">
-            <label for="searchQuery">Search</label>
-            <input id="searchQuery" name="searchQuery" type="text">
-            <input type="submit" value="Search">
-            <input type="hidden" th:value="${category}" name="category">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label for="searchQuery" class="input-group-text">Search</label>
+                        <input id="searchQuery" name="searchQuery" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-dark btn-block"><i class="bi bi-search"></i> Search</button>
+                </div>
+                <input type="hidden" th:value="${category}" name="category">
+            </div>
         </form>
     </div>
     <div class="row">
