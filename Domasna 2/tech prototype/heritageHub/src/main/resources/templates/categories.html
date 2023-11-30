@@ -3,13 +3,13 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Categories</title>
+    <title>Heritage Hub Home Page</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="/main.css">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         #map {
-            height: 450px;
+            height: 420px;
             width: 100%;
         }
     </style>
@@ -42,10 +42,12 @@
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
-        <a href="#" class="btn btn-secondary d-none d-md-block" id="contactButton">Contact</a>
+        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">About us</a>
     </div>
 </nav>
-
+<div class="text-center">
+    <h1 class="display-6">Explore Macedonia's Heritage Sites</h1>
+</div>
 <div id="map"></div>
 <!-- Thymeleaf iteration to store monument coordinates -->
 <span th:each="monument : ${monumentList}">
@@ -57,7 +59,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-body text-center my-4">
+                <div class="card-body text-center p-2 my-3">
                     <h5 class="card-title mb-0">Cultural Monuments</h5>
                     <p class="card-text font-weight-bold mb-0">34</p>
                 </div>
@@ -65,7 +67,7 @@
         </div>
         <div class="col-md-6">
             <div class="card">
-                <div class="card-body text-center my-4">
+                <div class="card-body text-center p-2 my-3">
                     <h5 class="card-title mb-0">Historical Monuments</h5>
                     <p class="card-text font-weight-bold mb-0">231</p>
                 </div>
@@ -73,6 +75,7 @@
         </div>
     </div>
 </div>
+
 
 
 

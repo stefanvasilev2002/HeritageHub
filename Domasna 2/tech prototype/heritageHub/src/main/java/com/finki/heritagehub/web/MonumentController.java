@@ -49,4 +49,8 @@ public class MonumentController {
         model.addAttribute("monument", monument);
         return "monumentDetails";
     }
+    @GetMapping("/about-us")
+    public String showAboutUs(){
+        return "about-us";
+    }
 }
