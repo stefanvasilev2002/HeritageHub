@@ -42,10 +42,30 @@
 </nav>
 
 <div class="container">
-    <h2>
+
+    <h2 class="display-6">
         <th:block th:if="${category == 'historical'}">Historical Monuments</th:block>
         <th:block th:if="${category != 'historical'}">Cultural Monuments</th:block>
     </h2>
+<<<<<<< Updated upstream
+=======
+    <div class="search mt-4 p-3 border rounded">
+        <form th:action="@{/category/search}" method="get">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label for="searchQuery" class="input-group-text">Search</label>
+                        <input id="searchQuery" name="searchQuery" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-secondary btn-block">Search</button>
+                </div>
+                <input type="hidden" th:value="${category}" name="category">
+            </div>
+        </form>
+    </div>
+>>>>>>> Stashed changes
 
     <div class="row">
         <div th:each="monument : ${monuments}" class="col-md-4 mb-4">
