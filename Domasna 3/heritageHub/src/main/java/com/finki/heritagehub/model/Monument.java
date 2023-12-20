@@ -1,11 +1,11 @@
 package com.finki.heritagehub.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -19,8 +19,42 @@ public class Monument {
     private boolean historic;
     private boolean cultural;
     private String city;
+    private double rating = 0;
+    private int numRatings = 0;
     public Monument() {
         // no-argument constructor for JPA
+    }
+
+    public Monument(double latitude, double longitude, String name, boolean historic, boolean cultural, String city) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.name = name;
+        this.historic = historic;
+        this.cultural = cultural;
+        this.city = city;
+    }
+
+    public Monument(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.name = name;
+        this.historic = historic;
+        this.cultural = cultural;
+        this.city = city;
+        this.rating = rating;
+        this.numRatings = numRatings;
+    }
+
+    public Monument(Long id, double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings) {
+        this.id = id;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.name = name;
+        this.historic = historic;
+        this.cultural = cultural;
+        this.city = city;
+        this.rating = rating;
+        this.numRatings = numRatings;
     }
 }
 

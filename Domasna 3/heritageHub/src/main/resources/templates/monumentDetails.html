@@ -56,6 +56,8 @@
         <input type="hidden" id="latitude" th:value="${monument.latitude}" />
         <input type="hidden" id="longitude" th:value="${monument.longitude}" />
         <input type="hidden" id="monumentName" th:value="${monument.name != null ? monument.name : ''}" />
+        <input type="hidden" id="currentMonumentId" th:value="${monument.id}" />
+        <input type="hidden" id="userRatedMonuments" th:value="${userRatedMonuments}" />
         <!-- Title using Bootstrap classes -->
         <h3 class="text-center mt-4" th:text="${monument.name != null ? monument.name : ''}"></h3>
         <p class="text-center mt-4" th:text="${monument.city != null ? monument.city : ''}"></p>
@@ -65,13 +67,47 @@
 
 <div id="map"></div>
 
+<!-- This section displays when rated is true -->
+<div th:if="${rated}" class="text-center">
+    <div class="alert alert-info" role="alert">
+        <p>Your rating: <span id="ratedValue" th:text="${rating}"></span></p>
+    </div>
+</div>
+
+<!-- This section displays when rated is false or null -->
+<div th:unless="${rated}" class="d-flex flex-column align-items-center mt-3">
+    <h4 class="mb-1">Rate this monument</h4>
+    <form id="rateForm" method="post" action="/addRating" class="needs-validation" novalidate style="max-width: 300px;">
+        <input type="hidden" id="monumentId" name="monumentId" th:value="${monument.id}">
+
+        <div class="input-group">
+            <label for="rating" class="input-group-text me-2" style="width: auto;">Rating (0-5):</label>
+            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="${rating}" class="form-control me-2">
+            <button id="rateButton" type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
             <button class="btn btn-primary" onclick="goBack()">Back</button>
+            <!-- Button to go to /login/{id} -->
+            <a th:href="@{/login/{id}(id=${monument.id})}" class="btn btn-danger">Edit Monument</a>
         </div>
     </div>
 </div>
+
+
 
 
 
