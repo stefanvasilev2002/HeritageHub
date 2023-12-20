@@ -8,4 +8,6 @@ import java.util.List;
 public interface MonumentRepository extends JpaRepository<Monument, Long> {
     List<Monument> findAllByHistoricIsTrue();
     List<Monument> findAllByCulturalIsTrue();
+    Monument findMonumentById(Long id);
+    void deleteMonumentById(long id);
 }
