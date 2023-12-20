@@ -21,7 +21,7 @@
 <body>
 <nav class="navbar navbar-expand-md">
     <div class="container-xl">
-        <a href="/" class="navbar-brand">
+        <a href="/mk" class="navbar-brand">
             <span class="fw-bold text-secondary">HeritageHub</span>
         </a>
 
@@ -31,28 +31,28 @@
         <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
             <ul class="navbar-nav nav-tabs mr-auto ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/mk">Почетна</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/category/historical}">Historical</a>
+                    <a class="nav-link" th:href="@{/mk/category/historical}">Историски</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/category/cultural}">Cultural</a>
+                    <a class="nav-link" th:href="@{/mk/category/cultural}">Културни</a>
                 </li>
                 <li class="nav-item">
                     <span style="font-size: smaller;">
-                        <a th:href="@{/mk/monument/{id}(id=${monument.id})}" style="color: red;">MK</a>
-                        <a href="#" style="color: blue;">EN</a>
+                        <a href="#" style="color: red;">MK</a>
+                        <a th:href="@{/monument/{id}(id=${monument.id})}" style="color: blue;">EN</a>
                     </span>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/mk/about-us">За нас</a>
                 </li>
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
-        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">About us</a>
+        <a href="/mk/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">За нас</a>
     </div>
 </nav>
 <!-- Define Thymeleaf variables outside the script block -->
@@ -76,20 +76,20 @@
 <!-- This section displays when rated is true -->
 <div th:if="${rated}" class="text-center">
     <div class="alert alert-info" role="alert">
-        <p>Your rating: <span id="ratedValue" th:text="${rating}"></span></p>
+        <p>Твојата оцена: <span id="ratedValue" th:text="${rating}"></span></p>
     </div>
 </div>
 
 <!-- This section displays when rated is false or null -->
 <div th:unless="${rated}" class="d-flex flex-column align-items-center mt-3">
-    <h4 class="mb-1">Rate this monument</h4>
-    <form id="rateForm" method="post" action="/addRating" class="needs-validation" novalidate style="max-width: 300px;">
+    <h4 class="mb-1">Оцени го овој споменик</h4>
+    <form id="rateForm" method="post" action="/mk/addRating" class="needs-validation" novalidate style="max-width: 300px;">
         <input type="hidden" id="monumentId" name="monumentId" th:value="${monument.id}">
 
         <div class="input-group">
-            <label for="rating" class="input-group-text me-2" style="width: auto;">Rating (0-5):</label>
+            <label for="rating" class="input-group-text me-2" style="width: auto;">Оцена (0-5):</label>
             <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="${rating}" class="form-control me-2">
-            <button id="rateButton" type="submit" class="btn btn-success">Submit</button>
+            <button id="rateButton" type="submit" class="btn btn-success">Потврди</button>
         </div>
     </form>
 </div>
@@ -106,9 +106,9 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
-            <button class="btn btn-primary" onclick="goBack()">Back</button>
+            <button class="btn btn-primary" onclick="goBack()">Назад</button>
             <!-- Button to go to /login/{id} -->
-            <a th:href="@{/login/{id}(id=${monument.id})}" class="btn btn-danger">Edit Monument</a>
+            <a th:href="@{/mk/login/{id}(id=${monument.id})}" class="btn btn-danger">Измени споменик</a>
         </div>
     </div>
 </div>
