@@ -11,10 +11,13 @@
     <groupId>com.finki</groupId>
     <artifactId>heritageHub</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>heritageHub</name>
     <description>heritageHub</description>
     <properties>
         <java.version>17</java.version>
+        <start-class>com.finki.heritagehub.HeritageHubApplication.java</start-class>
+
     </properties>
     <dependencies>
         <dependency>
