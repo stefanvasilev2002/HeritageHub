@@ -14,17 +14,8 @@
     <packaging>jar</packaging>
     <name>heritageHub</name>
     <description>heritageHub</description>
-    <properties>
-        <java.version>11</java.version>
-        <start-class>com.finki.heritagehub.HeritageHubApplication.java</start-class>
-
-    </properties>
     <dependencies>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
-        </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
