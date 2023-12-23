@@ -17,13 +17,13 @@ public class MonumentService {
     public MonumentService(MonumentRepository monumentRepository, CSVLoaderService csvLoaderService) {
         this.monumentRepository = monumentRepository;
         this.csvLoaderService = csvLoaderService;
-        loadMonuments();
+        //loadMonuments();
     }
     public List<Monument> getAllMonumentsByCategory(String category) {
         if (Objects.equals(category, "historical")){
-            return monumentRepository.findAllByHistoricIsTrue();
+            return monumentRepository.findAllByHistoricIsTrueOrderById();
         }
-        return monumentRepository.findAllByCulturalIsTrue();
+        return monumentRepository.findAllByCulturalIsTrueOrderById();
     }
 
     public Monument getMonumentById(Long id) {
@@ -38,7 +38,9 @@ public class MonumentService {
     public List<Monument> getAllMonuments() {
         return  monumentRepository.findAll();
     }
-    @Transactional
+    public List<Monument> getAllOrderedMonuments(){
+        return monumentRepository.findAllByOrderById();
+    }
     public Monument addRatingById(Long id, double rating){
         Monument monument = monumentRepository.findMonumentById(id);
         double newRating = (monument.getRating() * monument.getNumRatings() + rating) / (monument.getNumRatings()+1);
