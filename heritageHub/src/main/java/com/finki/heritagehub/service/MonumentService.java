@@ -29,6 +29,7 @@ public class MonumentService {
     public Monument getMonumentById(Long id) {
         return monumentRepository.findById(id).orElse(null);
     }
+    @PostConstruct
     public void loadMonuments() {
         // Load from CSV and save to the database
         List<Monument> monuments = csvLoaderService.loadMonumentsFromCsv();
