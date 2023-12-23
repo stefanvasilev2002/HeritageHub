@@ -21,7 +21,7 @@ public class MonumentControllerMacedonian {
 
     @GetMapping("")
     public String showCategories(Model model) {
-        model.addAttribute("monumentList", monumentService.getAllMonuments());
+        model.addAttribute("monumentList", monumentService.getAllOrderedMonuments());
         return "categories_macedonian";
     }
 

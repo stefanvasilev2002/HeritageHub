@@ -39,7 +39,7 @@
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/about-us">Contact</a>
                 </li>
             </ul>
         </div>
@@ -80,7 +80,7 @@
                     <p class="card-text">Latitude: <span th:text="${monument.latitude}"></span></p>
                     <p class="card-text">Longitude: <span th:text="${monument.longitude}"></span></p>
                     <p class="card-text">City: <span th:text="${monument.city}"></span></p>
-                    <p class="card-text">Rating: <span th:text="'Rating: ' + ${monument.rating} + ' (' + ${monument.numRatings} + ')'"></span></p>
+                    <p class="card-text">Rating: <span th:text="${monument.rating} + ' (' + ${monument.numRatings} + ')'"></span></p>
                     <div class="d-flex justify-content-between align-items-center">
                         <a class="btn btn-primary" th:href="@{/monument/{id}(id=${monument.id})}">View</a>
                     </div>

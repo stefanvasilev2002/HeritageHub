@@ -80,7 +80,7 @@
                     <p class="card-text">Географска ширина: <span th:text="${monument.latitude}"></span></p>
                     <p class="card-text">Географска должина: <span th:text="${monument.longitude}"></span></p>
                     <p class="card-text">Град: <span th:text="${monument.city}"></span></p>
-                    <p class="card-text">Оцена: <span th:text="'Rating: ' + ${monument.rating} + ' (' + ${monument.numRatings} + ')'"></span></p>
+                    <p class="card-text">Оцена: <span th:text="${monument.rating} + ' (' + ${monument.numRatings} + ')'"></span></p>
                     <div class="d-flex justify-content-between align-items-center">
                         <a class="btn btn-primary" th:href="@{/mk/monument/{id}(id=${monument.id})}">Погледни</a>
                     </div>
