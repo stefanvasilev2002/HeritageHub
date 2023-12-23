@@ -10,4 +10,7 @@ public interface MonumentRepository extends JpaRepository<Monument, Long> {
     List<Monument> findAllByCulturalIsTrue();
     Monument findMonumentById(Long id);
     void deleteMonumentById(long id);
+    List<Monument> findAllByOrderById();
+    List<Monument> findAllByHistoricIsTrueOrderById();
+    List<Monument> findAllByCulturalIsTrueOrderById();
 }
