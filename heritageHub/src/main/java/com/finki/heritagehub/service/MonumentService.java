@@ -72,4 +72,8 @@ public class MonumentService {
     public void deleteMonumentById(Long id){
         monumentRepository.deleteMonumentById(id);
     }
+    public void deleteMonument(Long id) {
+        Monument monument = getMonumentById(id);
+        monumentRepository.delete(monument);
+    }
 }

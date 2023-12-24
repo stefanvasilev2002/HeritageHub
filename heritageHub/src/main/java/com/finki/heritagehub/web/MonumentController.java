@@ -25,6 +25,8 @@ public class MonumentController {
     @GetMapping("/")
     public String showCategories(Model model) {
         model.addAttribute("monumentList", monumentService.getAllOrderedMonuments());
+        model.addAttribute("numHistoricalMonuments", monumentService.getAllMonumentsByCategory("historical").size());
+        model.addAttribute("numCulturalMonuments", monumentService.getAllMonumentsByCategory("cultural").size());
         return "categories";
     }
 
@@ -142,6 +144,15 @@ public class MonumentController {
         Monument monument = monumentService.save(latitude, longitude, name, historic, cultural, city, rating, numRatings, monumentId);
 
         return "redirect:/monument/" + monument.getId();
+    }
+    @PostMapping("/deleteMonument")
+    public String deleteMonument(@RequestParam Long monumentId,
+                                 HttpServletRequest request){
+        if(request.getSession().getAttribute("isLogged") == null || !(Boolean) request.getSession().getAttribute("isLogged")){
+            return "redirect:/login/" + monumentId;
+        }
+        monumentService.deleteMonument(monumentId);
+        return "redirect:/";
     }
 
 }

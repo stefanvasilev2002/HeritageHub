@@ -22,6 +22,8 @@ public class MonumentControllerMacedonian {
     @GetMapping("")
     public String showCategories(Model model) {
         model.addAttribute("monumentList", monumentService.getAllOrderedMonuments());
+        model.addAttribute("numHistoricalMonuments", monumentService.getAllMonumentsByCategory("historical").size());
+        model.addAttribute("numCulturalMonuments", monumentService.getAllMonumentsByCategory("cultural").size());
         return "categories_macedonian";
     }
 
@@ -139,6 +141,15 @@ public class MonumentControllerMacedonian {
         Monument monument = monumentService.save(latitude, longitude, name, historic, cultural, city, rating, numRatings, monumentId);
 
         return "redirect:/mk/monument/" + monument.getId();
+    }
+    @PostMapping("/deleteMonument")
+    public String deleteMonument(@RequestParam Long monumentId,
+                                 HttpServletRequest request){
+        if(request.getSession().getAttribute("isLogged") == null || !(Boolean) request.getSession().getAttribute("isLogged")){
+            return "redirect:/mk/login/" + monumentId;
+        }
+        monumentService.deleteMonument(monumentId);
+        return "redirect:/mk";
     }
 
 }
