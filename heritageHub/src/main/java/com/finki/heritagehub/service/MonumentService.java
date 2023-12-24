@@ -17,7 +17,8 @@ public class MonumentService {
     public MonumentService(MonumentRepository monumentRepository, CSVLoaderService csvLoaderService) {
         this.monumentRepository = monumentRepository;
         this.csvLoaderService = csvLoaderService;
-        //loadMonuments();
+        monumentRepository.deleteAll();
+        loadMonuments();
     }
     public List<Monument> getAllMonumentsByCategory(String category) {
         if (Objects.equals(category, "historical")){
