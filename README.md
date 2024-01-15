@@ -5,7 +5,8 @@
 
 ## Име на веб апликацијата: 
 Macedonia Heritage Hub
-
+## Линк до апликацијата: 
+https://heritage-hub-mk-deb79ca264f9.herokuapp.com/
 ## Автори:
 - Стефан Василев - 211021
 - Андреј Генчовски - 211229
@@ -17,4 +18,4 @@ Macedonia Heritage Hub
 ## Ментори:
 - проф. д-р Љупчо Антовски
 - проф. д-р Петре Ламески
-Линк до аплиакацијата : https://heritage-hub-mk-deb79ca264f9.herokuapp.com/
+
