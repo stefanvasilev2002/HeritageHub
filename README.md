@@ -17,3 +17,4 @@ Macedonia Heritage Hub
 ## Ментори:
 - проф. д-р Љупчо Антовски
 - проф. д-р Петре Ламески
+Линк до аплиакацијата : https://heritage-hub-mk-deb79ca264f9.herokuapp.com/
