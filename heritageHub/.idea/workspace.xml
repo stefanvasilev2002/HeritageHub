@@ -4,43 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="small html changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/AppUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/RoleUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/exceptions/InvalidAppUserEmailException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/exceptions/InvalidAppUserUsernameException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/exceptions/InvalidArgumentsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/exceptions/InvalidUserCredentialsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/repository/AppUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/LanguageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/CSVLoaderServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/LanguageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Monument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Monument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/repository/MonumentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/repository/MonumentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/CSVLoaderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/CSVLoaderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/filters/LoginFilter.java" beforeDir="false" />
-    </list>
-    <list id="5c44cd70-9c33-4ec1-85d9-cda9b6197728" name="Changes by Aleksandar" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/AppUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/HeritageHubApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/HeritageHubApplication.java" afterDir="false" />
-    </list>
-    <list id="12e6a889-15f0-48c4-bf27-3852f996b2b5" name="Changes by andre" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about-us.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/addMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/addMonument.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/editMonument.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monuments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monuments.html" afterDir="false" />
-    </list>
+    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="small html changes" />
+    <list id="5c44cd70-9c33-4ec1-85d9-cda9b6197728" name="Changes by Aleksandar" comment="" />
+    <list id="12e6a889-15f0-48c4-bf27-3852f996b2b5" name="Changes by andre" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +57,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "Deployment",
+    "git-widget-placeholder": "Deployment2",
     "last_opened_file_path": "C:/Users/38978/Desktop/DIANS/DiAnS/heritageHub",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -173,7 +139,7 @@
       <workItem from="1703365765686" duration="5123000" />
       <workItem from="1703411776164" duration="1838000" />
       <workItem from="1706096708607" duration="137000" />
-      <workItem from="1706096981961" duration="7757000" />
+      <workItem from="1706096981961" duration="8385000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />

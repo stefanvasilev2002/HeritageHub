@@ -51,6 +51,15 @@
                 <div class="card-body">
                     <form method="post" action="/add">
                         <div class="mb-3">
+<<<<<<< Updated upstream:Domasna 3/heritageHub/src/main/resources/templates/addMonument.html
+                            <label for="latitude" class="form-label">Latitude:</label>
+                            <input type="number" step="any" id="latitude" name="latitude" required class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="longitude" class="form-label">Longitude:</label>
+                            <input type="number" step="any" id="longitude" name="longitude" required class="form-control">
+=======
                             <label for="latitude" class="form-label" th:text="${bodyLatitude}">Latitude:</label>
                             <input value="41.6086" type="number" step="any" id="latitude" name="latitude" required class="form-control">
                         </div>
@@ -58,6 +67,7 @@
                         <div class="mb-3">
                             <label for="longitude" class="form-label" th:text="${bodyLongitude}">Longitude:</label>
                             <input value="21.7453" type="number" step="any" id="longitude" name="longitude" required class="form-control">
+>>>>>>> Stashed changes:heritageHub/src/main/resources/templates/addMonument.html
                         </div>
 
                         <div class="mb-3">
