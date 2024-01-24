@@ -87,15 +87,10 @@
         <input type="hidden" id="monumentId" name="monumentId" th:value="${monument.id}">
 
         <div class="input-group">
-<<<<<<< Updated upstream:Domasna 3/heritageHub/src/main/resources/templates/monumentDetails.html
-            <label for="rating" class="input-group-text me-2" style="width: auto;">Rating (0-5):</label>
-            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="${rating}" class="form-control me-2">
-            <button id="rateButton" type="submit" class="btn btn-success">Submit</button>
-=======
             <label for="rating" class="input-group-text me-2" style="width: auto;" th:text="${bodyRating}">Rating (0-5):</label>
             <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="0" class="form-control me-2">
             <button id="rateButton" type="submit" class="btn btn-success" th:text="${bodySubmitButton}">Submit</button>
->>>>>>> Stashed changes:heritageHub/src/main/resources/templates/monumentDetails.html
+
         </div>
     </form>
 </div>
@@ -112,7 +107,7 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
-            <button class="btn btn-primary" onclick="goBack()">Back</button>
+            <button class="btn btn-primary" th:text="${backButton}" onclick="goBack()">Back</button>
             <!-- Button to go to /login/{id} -->
             <a th:href="@{/login/{id}(id=${monument.id})}" class="btn btn-danger">Edit Monument</a>
         </div>

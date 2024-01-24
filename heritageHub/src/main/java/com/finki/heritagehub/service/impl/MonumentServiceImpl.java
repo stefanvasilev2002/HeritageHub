@@ -19,7 +19,7 @@ public class MonumentServiceImpl implements MonumentService {
         this.monumentRepository = monumentRepository;
         this.csvLoaderServiceImpl = csvLoaderServiceImpl;
         //monumentRepository.deleteAll();
-        //loadMonuments();
+        loadMonuments();
     }
     @Override
     public List<Monument> getAllMonumentsByCategory(String category) {

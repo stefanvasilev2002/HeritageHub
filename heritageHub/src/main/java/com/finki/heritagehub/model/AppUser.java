@@ -10,7 +10,7 @@ import java.util.List;
 public class AppUser {
     @Id
     private String username;
-    @Id
+
     private String email;
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)

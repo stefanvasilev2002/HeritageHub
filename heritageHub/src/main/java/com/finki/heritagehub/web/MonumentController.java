@@ -1,8 +1,10 @@
 package com.finki.heritagehub.web;
 
 import com.finki.heritagehub.model.Monument;
+import com.finki.heritagehub.service.LanguageService;
 import com.finki.heritagehub.service.MonumentService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +18,11 @@ import java.util.stream.Collectors;
 @Controller
 public class MonumentController {
     private final MonumentService monumentService;
+    private final LanguageService languageService;
 
-    public MonumentController(MonumentService monumentService) {
+    public MonumentController(MonumentService monumentService, LanguageService languageService) {
         this.monumentService = monumentService;
+        this.languageService = languageService;
     }
 
     @GetMapping("/")
@@ -123,9 +127,6 @@ public class MonumentController {
     public String editMonument(@PathVariable Long id,
                                Model model,
                                HttpServletRequest request){
-        if(request.getSession().getAttribute("isLogged") == null || !(Boolean) request.getSession().getAttribute("isLogged")){
-            return "redirect:/login/" + id;
-        }
         Monument monument = monumentService.getMonumentById(id);
         if(monument == null){
             model.addAttribute("hasError", true);
@@ -159,5 +160,35 @@ public class MonumentController {
         monumentService.deleteMonument(monumentId);
         return "redirect:/";
     }
+    @PostMapping("/mk")
+    String changeLanguageMacedonian(@RequestParam String pathInfo, HttpServletRequest request, Model model){
+        request.setAttribute("lang", "mk");
 
+        if(pathInfo.startsWith("/edit")){
+            languageService.changeEditMonument(model, request);
+        }
+        if(pathInfo.startsWith("/add")){
+            languageService.changeAddMonument(model, request);
+        }
+        if(pathInfo.startsWith("/about-us")){
+            languageService.changeAboutUs(model,request);
+        }
+        if(pathInfo.startsWith("/category")){
+            languageService.changeMonuments(model,request);
+        }
+        if(pathInfo.equals("/")){
+            languageService.changeCategories(model,request);
+        }
+        if(pathInfo.startsWith("/monument")){
+            languageService.changeMonumentDetails(model, request);
+        }
+        return "redirect:/" + pathInfo;
+    }
+    @PostMapping("/en")
+    String changeLanguageEnglish(@RequestParam String pathInfo, HttpServletRequest request, Model model){
+        request.setAttribute("lang", "en");
+
+
+        return "redirect:/" + pathInfo;
+    }
 }

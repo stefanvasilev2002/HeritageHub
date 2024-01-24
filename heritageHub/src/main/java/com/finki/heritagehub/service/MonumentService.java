@@ -23,4 +23,4 @@ public interface MonumentService {
 
     void deleteMonument(Long id);
 }
->>>>>>> Stashed changes:heritageHub/src/main/java/com/finki/heritagehub/service/MonumentService.java
+

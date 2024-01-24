@@ -4,9 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="small html changes" />
+    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Copied project to new branch">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/HeritageHubApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/HeritageHubApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/addMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/addMonument.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/editMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/editMonument.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/monumentDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/monumentDetails.html" afterDir="false" />
+    </list>
     <list id="5c44cd70-9c33-4ec1-85d9-cda9b6197728" name="Changes by Aleksandar" comment="" />
-    <list id="12e6a889-15f0-48c4-bf27-3852f996b2b5" name="Changes by andre" comment="" />
+    <list id="12e6a889-15f0-48c4-bf27-3852f996b2b5" name="Changes by andre" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/LanguageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/LanguageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/LanguageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/LanguageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/addMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/addMonument.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/editMonument.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +56,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -139,7 +169,7 @@
       <workItem from="1703365765686" duration="5123000" />
       <workItem from="1703411776164" duration="1838000" />
       <workItem from="1706096708607" duration="137000" />
-      <workItem from="1706096981961" duration="8385000" />
+      <workItem from="1706096981961" duration="11777000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -221,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703370783501</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Copied project to new branch">
+      <option name="closed" value="true" />
+      <created>1706105909302</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1706105909302</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +271,7 @@
     <MESSAGE value="dependency error" />
     <MESSAGE value="dependency error fix" />
     <MESSAGE value="small html changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="small html changes" />
+    <MESSAGE value="Copied project to new branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Copied project to new branch" />
   </component>
 </project>

@@ -31,7 +31,7 @@ public class WebSecurityConfig {
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/tasks/{id}/mark_done"))
                         .hasRole("DEVELOPER")
                         .anyRequest()
-                        .authenticated()
+                        .permitAll()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")

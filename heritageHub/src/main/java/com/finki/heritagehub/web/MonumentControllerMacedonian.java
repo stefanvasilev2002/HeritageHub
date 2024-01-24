@@ -1,7 +1,7 @@
 package com.finki.heritagehub.web;
 
 import com.finki.heritagehub.model.Monument;
-import com.finki.heritagehub.service.impl.MonumentServiceImpl;
+import com.finki.heritagehub.service.MonumentService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,27 +13,24 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/mk")
 public class MonumentControllerMacedonian {
-    private final MonumentServiceImpl monumentServiceImpl;
+    private final MonumentService monumentService;
 
-    public MonumentControllerMacedonian(MonumentServiceImpl monumentServiceImpl) {
-        this.monumentServiceImpl = monumentServiceImpl;
+    public MonumentControllerMacedonian(MonumentService monumentService) {
+        this.monumentService = monumentService;
     }
 
     @GetMapping("")
     public String showCategories(Model model) {
-<<<<<<< Updated upstream:Domasna 3/heritageHub/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java
         model.addAttribute("monumentList", monumentService.getAllOrderedMonuments());
-=======
-        model.addAttribute("monumentList", monumentServiceImpl.getAllOrderedMonuments());
-        model.addAttribute("numHistoricalMonuments", monumentServiceImpl.getAllMonumentsByCategory("historical").size());
-        model.addAttribute("numCulturalMonuments", monumentServiceImpl.getAllMonumentsByCategory("cultural").size());
->>>>>>> Stashed changes:heritageHub/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java
+        model.addAttribute("monumentList", monumentService.getAllOrderedMonuments());
+        model.addAttribute("numHistoricalMonuments", monumentService.getAllMonumentsByCategory("historical").size());
+        model.addAttribute("numCulturalMonuments", monumentService.getAllMonumentsByCategory("cultural").size());
         return "categories_macedonian";
     }
 
     @GetMapping("/category/{category}")
     public String showMonumentsByCategory(@PathVariable String category, Model model) {
-        List<Monument> monuments = monumentServiceImpl.getAllMonumentsByCategory(category);
+        List<Monument> monuments = monumentService.getAllMonumentsByCategory(category);
         model.addAttribute("monuments", monuments);
         model.addAttribute("category",category);
         return "monuments_macedonian";
@@ -43,7 +40,7 @@ public class MonumentControllerMacedonian {
                          @RequestParam(required = false) String searchQueryCity,
                          @RequestParam String category,
                          Model model) {
-        List<Monument> monuments = monumentServiceImpl.getAllMonumentsByCategory(category);
+        List<Monument> monuments = monumentService.getAllMonumentsByCategory(category);
         if (searchQueryCity == null && searchQueryName != null){
             monuments = monuments.stream()
                     .filter(x-> x.getName().toLowerCase().contains(searchQueryName.toLowerCase()))
@@ -72,7 +69,7 @@ public class MonumentControllerMacedonian {
         Double rating = (Double) request.getSession().getAttribute(String.format("rating%d",id));
         model.addAttribute("rated", rated);
         model.addAttribute("rating", rating);
-        Monument monument = monumentServiceImpl.getMonumentById(id);
+        Monument monument = monumentService.getMonumentById(id);
         model.addAttribute("monument", monument);
         return "monumentDetails_macedonian";
     }
@@ -96,7 +93,7 @@ public class MonumentControllerMacedonian {
             @RequestParam(defaultValue = "0") double rating,
             @RequestParam(defaultValue = "0") int numRatings
     ) {
-        monumentServiceImpl.save(latitude,longitude,name,historic,cultural,city,rating,numRatings, null);
+        monumentService.save(latitude,longitude,name,historic,cultural,city,rating,numRatings, null);
         return "redirect:/mk";
     }
     @PostMapping("/addRating")
@@ -108,7 +105,7 @@ public class MonumentControllerMacedonian {
         if(rating >= 0 && rating <= 5){
             request.getSession().setAttribute(String.format("isRated%d", monumentId), true);
             request.getSession().setAttribute(String.format("rating%d",monumentId), rating);
-            monumentServiceImpl.addRatingById(monumentId, rating);
+            monumentService.addRatingById(monumentId, rating);
         }
         return "redirect:/mk/monument/" + monumentId;
 
@@ -120,7 +117,7 @@ public class MonumentControllerMacedonian {
         if(request.getSession().getAttribute("isLogged") == null || !(Boolean) request.getSession().getAttribute("isLogged")){
             return "redirect:/mk/login/" + id;
         }
-        Monument monument = monumentServiceImpl.getMonumentById(id);
+        Monument monument = monumentService.getMonumentById(id);
         if(monument == null){
             model.addAttribute("hasError", true);
             model.addAttribute("error", String.format("Monument with id %d not found", id));
@@ -140,21 +137,18 @@ public class MonumentControllerMacedonian {
                                @RequestParam double rating,
                                @RequestParam int numRatings) {
 
-        Monument monument = monumentServiceImpl.save(latitude, longitude, name, historic, cultural, city, rating, numRatings, monumentId);
+        Monument monument = monumentService.save(latitude, longitude, name, historic, cultural, city, rating, numRatings, monumentId);
 
         return "redirect:/mk/monument/" + monument.getId();
     }
-<<<<<<< Updated upstream:Domasna 3/heritageHub/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java
-=======
+
     @PostMapping("/deleteMonument")
     public String deleteMonument(@RequestParam Long monumentId,
                                  HttpServletRequest request){
         if(request.getSession().getAttribute("isLogged") == null || !(Boolean) request.getSession().getAttribute("isLogged")){
             return "redirect:/mk/login/" + monumentId;
         }
-        monumentServiceImpl.deleteMonument(monumentId);
+        monumentService.deleteMonument(monumentId);
         return "redirect:/mk";
     }
->>>>>>> Stashed changes:heritageHub/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java
-
 }
