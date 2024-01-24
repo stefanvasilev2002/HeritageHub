@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Edit Monument</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="/main.css">
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md">
+    <div class="container-xl">
+        <a href="/" class="navbar-brand">
+            <span class="fw-bold text-secondary" th:text="${navHeader}">HeritageHub</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
+            <ul class="navbar-nav nav-tabs mr-auto ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" th:text="${navHome}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/historical}" th:text="${navHistorical}">Historical</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
+                </li>
+                <li class="nav-item">
+                    <span style="font-size: smaller;">
+                        <a th:href="@{/mk/edit/{id}(id=${monument.id})}" style="color: red;">MK</a>
+                        <a href="#" style="color: blue;">EN</a>
+                    </span>
+                </li>
+                <!-- Hidden "Contact" item for smaller screens -->
+                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
+                </li>
+            </ul>
+        </div>
+        <!-- "Contact" button for larger screens -->
+        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton" th:text="${navAboutUs}">About us</a>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div th:if="${hasError == null or !hasError}" class="card">
+                <h1 class="card-header text-center" th:text="${bodyHeader}">Edit Monument</h1>
+                <div class="card-body">
+                    <form method="post" action="/editMonument" th:object="${monument}">
+                        <div class="mb-3">
+                            <label for="latitude" class="form-label" th:text="${bodyLatitude}">Latitude:</label>
+                            <input type="number" step="any" id="latitude" name="latitude" required th:field="*{latitude}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="longitude" class="form-label" th:text="${bodyLongitude}">Longitude:</label>
+                            <input type="number" step="any" id="longitude" name="longitude" required th:field="*{longitude}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label" th:text="${bodyName}">Name:</label>
+                            <input type="text" id="name" name="name" required th:field="*{name}" class="form-control">
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="historic" name="historic" th:checked="*{historic}" class="form-check-input">
+                            <label for="historic" class="form-check-label" th:text="${bodyHistoric}">Historic</label>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="cultural" name="cultural" th:checked="*{cultural}" class="form-check-input">
+                            <label for="cultural" class="form-check-label" th:text="${bodyCultural}">Cultural</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="city" class="form-label" th:text="${bodyCity}">City:</label>
+                            <input type="text" id="city" name="city" required th:field="*{city}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="rating" class="form-label" th:text="${bodyRating}">Rating (0-5):</label>
+                            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" th:field="*{rating}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="numRatings" class="form-label" th:text="${bodyNumRatings}">Number of Ratings:</label>
+                            <input type="number" id="numRatings" name="numRatings" min="0" th:field="*{numRatings}" class="form-control">
+                        </div>
+
+                        <input type="hidden" id="monumentId" name="monumentId" th:value="*{id}">
+
+                        <input type="submit" value="Submit Edit" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div th:if="${hasError != null and hasError}" class="alert alert-danger" role="alert">
+                <p th:text="${error}" class="mb-0"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center">
+            <button class="btn btn-primary" onclick="goBack()">Back</button>
+        </div>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/visibilityToggle.js"></script>
+</body>
+</html>

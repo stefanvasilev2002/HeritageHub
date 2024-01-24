@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${monument != null ? monument.name : 'Map Display'}"> Детали</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { /* Set map dimensions */
+            height: 400px;
+            width: 100%;
+        }
+        .monument-properties {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md">
+    <div class="container-xl">
+        <a href="/mk" class="navbar-brand">
+            <span class="fw-bold text-secondary">HeritageHub</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
+            <ul class="navbar-nav nav-tabs mr-auto ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/mk">Почетна</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mk/category/historical}">Историски</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mk/category/cultural}">Културни</a>
+                </li>
+                <li class="nav-item">
+                    <span style="font-size: smaller;">
+                        <a href="#" style="color: red;">MK</a>
+                        <a th:href="@{/monument/{id}(id=${monument.id})}" style="color: blue;">EN</a>
+                    </span>
+                </li>
+                <!-- Hidden "Contact" item for smaller screens -->
+                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
+                    <a class="nav-link" href="/mk/about-us">За нас</a>
+                </li>
+            </ul>
+        </div>
+        <!-- "Contact" button for larger screens -->
+        <a href="/mk/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">За нас</a>
+    </div>
+</nav>
+<!-- Define Thymeleaf variables outside the script block -->
+<div class="container">
+    <!-- Thymeleaf variables -->
+    <div th:if="${monument != null}">
+        <input type="hidden" id="latitude" th:value="${monument.latitude}" />
+        <input type="hidden" id="longitude" th:value="${monument.longitude}" />
+        <input type="hidden" id="monumentName" th:value="${monument.name != null ? monument.name : ''}" />
+        <input type="hidden" id="currentMonumentId" th:value="${monument.id}" />
+        <input type="hidden" id="userRatedMonuments" th:value="${userRatedMonuments}" />
+        <!-- Title using Bootstrap classes -->
+        <h3 class="text-center mt-4" th:text="${monument.name != null ? monument.name : ''}"></h3>
+        <p class="text-center mt-4" th:text="${monument.city != null ? monument.city : ''}"></p>
+
+    </div>
+</div>
+
+<div id="map"></div>
+
+<!-- This section displays when rated is true -->
+<div th:if="${rated}" class="text-center">
+    <div class="alert alert-info" role="alert">
+        <p>Твојата оцена: <span id="ratedValue" th:text="${rating}"></span></p>
+    </div>
+</div>
+
+<!-- This section displays when rated is false or null -->
+<div th:unless="${rated}" class="d-flex flex-column align-items-center mt-3">
+    <h4 class="mb-1">Оцени го овој споменик</h4>
+    <form id="rateForm" method="post" action="/mk/addRating" class="needs-validation" novalidate style="max-width: 300px;">
+        <input type="hidden" id="monumentId" name="monumentId" th:value="${monument.id}">
+
+        <div class="input-group">
+            <label for="rating" class="input-group-text me-2" style="width: auto;">Оцена (0-5):</label>
+            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="${rating}" class="form-control me-2">
+            <button id="rateButton" type="submit" class="btn btn-success">Потврди</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center">
+            <button class="btn btn-primary" onclick="goBack()">Назад</button>
+            <!-- Button to go to /login/{id} -->
+            <a th:href="@{/mk/login/{id}(id=${monument.id})}" class="btn btn-danger">Измени споменик</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/visibilityToggle.js"></script>
+<script>
+    var latitude = document.getElementById('latitude').value;
+    var longitude = document.getElementById('longitude').value;
+    var monumentName = document.getElementById('monumentName').value;
+
+    var map = L.map('map').setView([latitude, longitude], 13); // Set monument's coordinates
+
+    // Add OpenStreetMap tiles as the base layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19, // Maximum zoom level
+        attribution: '© OpenStreetMap contributors' // Attribution text
+    }).addTo(map);
+
+    // Add a marker for the monument location with its name as the popup content (if available)
+    var marker = L.marker([latitude, longitude]).addTo(map);
+    if (monumentName.trim() !== '') {
+        marker.bindPopup(monumentName).openPopup();
+    }
+</script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
