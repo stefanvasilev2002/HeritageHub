@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${monument != null ? monument.name : 'Map Display'}"> Details</title>
+    <title th:text="${monument != null ? monument.name : title}"> Details</title>
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
@@ -22,7 +22,7 @@
 <nav class="navbar navbar-expand-md">
     <div class="container-xl">
         <a href="/" class="navbar-brand">
-            <span class="fw-bold text-secondary">HeritageHub</span>
+            <span class="fw-bold text-secondary" th:text="${navHeader}">HeritageHub</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,13 +31,13 @@
         <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
             <ul class="navbar-nav nav-tabs mr-auto ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/" th:text="${navHome}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/category/historical}">Historical</a>
+                    <a class="nav-link" th:href="@{/category/historical}" th:text="${navHistorical}">Historical</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/category/cultural}">Cultural</a>
+                    <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
                 </li>
                 <li class="nav-item">
                     <span style="font-size: smaller;">
@@ -47,12 +47,12 @@
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
-                    <a class="nav-link" href="/about-us">Contact</a>
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
                 </li>
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
-        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">About us</a>
+        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton" th:text="${navAboutUs}">About us</a>
     </div>
 </nav>
 <!-- Define Thymeleaf variables outside the script block -->
@@ -76,20 +76,26 @@
 <!-- This section displays when rated is true -->
 <div th:if="${rated}" class="text-center">
     <div class="alert alert-info" role="alert">
-        <p>Your rating: <span id="ratedValue" th:text="${rating}"></span></p>
+        <p th:text="${bodyYourRating}">Your rating: <span id="ratedValue" th:text="${rating}"></span></p>
     </div>
 </div>
 
 <!-- This section displays when rated is false or null -->
 <div th:unless="${rated}" class="d-flex flex-column align-items-center mt-3">
-    <h4 class="mb-1">Rate this monument</h4>
+    <h4 class="mb-1" th:text="${bodyRateThisMonument}">Rate this monument</h4>
     <form id="rateForm" method="post" action="/addRating" class="needs-validation" novalidate style="max-width: 300px;">
         <input type="hidden" id="monumentId" name="monumentId" th:value="${monument.id}">
 
         <div class="input-group">
+<<<<<<< Updated upstream:Domasna 3/heritageHub/src/main/resources/templates/monumentDetails.html
             <label for="rating" class="input-group-text me-2" style="width: auto;">Rating (0-5):</label>
             <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="${rating}" class="form-control me-2">
             <button id="rateButton" type="submit" class="btn btn-success">Submit</button>
+=======
+            <label for="rating" class="input-group-text me-2" style="width: auto;" th:text="${bodyRating}">Rating (0-5):</label>
+            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="0" class="form-control me-2">
+            <button id="rateButton" type="submit" class="btn btn-success" th:text="${bodySubmitButton}">Submit</button>
+>>>>>>> Stashed changes:heritageHub/src/main/resources/templates/monumentDetails.html
         </div>
     </form>
 </div>

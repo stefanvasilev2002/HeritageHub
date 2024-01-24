@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>
+        <th:block th:if="${category == 'historical'}">Историски Соменици</th:block>
+        <th:block th:if="${category != 'historical'}">Културни Споменици</th:block>
+    </title>
+    <link rel="stylesheet" href="/main.css">
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md">
+    <div class="container-xl">
+        <a href="/mk" class="navbar-brand">
+            <span class="fw-bold text-secondary">HeritageHub</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
+            <ul class="navbar-nav nav-tabs mr-auto ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/mk">Почетна</a>
+                </li>
+                <li class="nav-item" th:class="${category == 'historical'} ? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/mk/category/historical}" th:class="${category == 'historical'} ? 'nav-link active' : 'nav-link'">Историски</a>
+                </li>
+                <li class="nav-item" th:class="${category != 'historical'} ? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/mk/category/cultural}" th:class="${category != 'historical'} ? 'nav-link active' : 'nav-link'">Културни</a>
+                </li>
+                <li class="nav-item">
+                    <span style="font-size: smaller;">
+                        <a href="#" style="color: red;">MK</a>
+                        <a th:href="@{/category/{category}(category=${category})}" style="color: blue;">EN</a>
+                    </span>
+                </li>
+                <!-- Hidden "Contact" item for smaller screens -->
+                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
+                    <a class="nav-link" href="/mk/about-us">За нас</a>
+                </li>
+            </ul>
+        </div>
+        <!-- "Contact" button for larger screens -->
+        <a href="/mk/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">За нас</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h2 class="display-6">
+        <th:block th:if="${category == 'historical'}">Историски Соменици</th:block>
+        <th:block th:if="${category != 'historical'}">Културни Споменици</th:block>
+    </h2>
+    <div class="search mt-4 p-3 border rounded">
+        <form th:action="@{/mk/category/search}" method="get">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label for="searchQueryName" class="input-group-text">Пребарај по име</label>
+                        <input id="searchQueryName" name="searchQueryName" type="text" class="form-control">
+                        <label for="searchQueryCity" class="input-group-text">Пребарај по град</label>
+                        <input id="searchQueryCity" name="searchQueryCity" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-dark btn-block"><i class="bi bi-search"></i> Пребарај</button>
+                </div>
+                <input type="hidden" th:value="${category}" name="category">
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div th:each="monument : ${monuments}" class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${monument.name}"></h5>
+                    <p class="card-text">Географска ширина: <span th:text="${monument.latitude}"></span></p>
+                    <p class="card-text">Географска должина: <span th:text="${monument.longitude}"></span></p>
+                    <p class="card-text">Град: <span th:text="${monument.city}"></span></p>
+                    <p class="card-text">Оцена: <span th:text="${monument.rating} + ' (' + ${monument.numRatings} + ')'"></span></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a class="btn btn-primary" th:href="@{/mk/monument/{id}(id=${monument.id})}">Погледни</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/visibilityToggle.js"></script>
+</body>
+</html>

@@ -1,18 +1,13 @@
 package com.finki.heritagehub.service;
+
 import com.finki.heritagehub.model.Monument;
-import com.finki.heritagehub.repository.MonumentRepository;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import jakarta.annotation.PostConstruct;
+
 import java.util.List;
-import java.util.Objects;
 
-@Service
-public class MonumentService {
-    private final MonumentRepository monumentRepository;
-    private final CSVLoaderService csvLoaderService;
+public interface MonumentService {
+    List<Monument> getAllMonumentsByCategory(String category);
 
+<<<<<<< Updated upstream:Domasna 3/heritageHub/src/main/java/com/finki/heritagehub/service/MonumentService.java
     @Autowired
     public MonumentService(MonumentRepository monumentRepository, CSVLoaderService csvLoaderService) {
         this.monumentRepository = monumentRepository;
@@ -72,3 +67,19 @@ public class MonumentService {
         monumentRepository.deleteMonumentById(id);
     }
 }
+=======
+    Monument getMonumentById(Long id);
+
+    void loadMonuments();
+
+    List<Monument> getAllMonuments();
+
+    List<Monument> getAllOrderedMonuments();
+
+    Monument addRatingById(Long id, double rating);
+
+    Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings, Long id);
+
+    void deleteMonument(Long id);
+}
+>>>>>>> Stashed changes:heritageHub/src/main/java/com/finki/heritagehub/service/MonumentService.java

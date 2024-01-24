@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Create Monument</title>
+    <title th:text="${title}">Create Monument</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="/main.css">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-md">
     <div class="container-xl">
         <a href="/" class="navbar-brand">
-            <span class="fw-bold text-secondary">HeritageHub</span>
+            <span class="fw-bold text-secondary" th:text="${navHeader}">HeritageHub</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
             <ul class="navbar-nav nav-tabs mr-auto ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/" th:text="${navHome}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/category/historical}">Historical</a>
+                    <a class="nav-link" th:href="@{/category/historical}" th:text="${navHistorical}">Historical</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/category/cultural}">Cultural</a>
+                    <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
                 </li>
                 <li class="nav-item">
                     <span style="font-size: smaller;">
@@ -35,22 +35,23 @@
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
-                    <a class="nav-link" href="/about-us">Contact</a>
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
                 </li>
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
-        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">About us</a>
+        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton" th:text="${navAboutUs}">About us</a>
     </div>
 </nav>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1 class="text-center">Create Monument</h1>
+            <h1 class="text-center" th:text="${bodyHeader}">Create Monument</h1>
             <div class="card">
                 <div class="card-body">
                     <form method="post" action="/add">
                         <div class="mb-3">
+<<<<<<< Updated upstream:Domasna 3/heritageHub/src/main/resources/templates/addMonument.html
                             <label for="latitude" class="form-label">Latitude:</label>
                             <input type="number" step="any" id="latitude" name="latitude" required class="form-control">
                         </div>
@@ -58,35 +59,44 @@
                         <div class="mb-3">
                             <label for="longitude" class="form-label">Longitude:</label>
                             <input type="number" step="any" id="longitude" name="longitude" required class="form-control">
+=======
+                            <label for="latitude" class="form-label" th:text="${bodyLatitude}">Latitude:</label>
+                            <input value="41.6086" type="number" step="any" id="latitude" name="latitude" required class="form-control">
                         </div>
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name:</label>
+                            <label for="longitude" class="form-label" th:text="${bodyLongitude}">Longitude:</label>
+                            <input value="21.7453" type="number" step="any" id="longitude" name="longitude" required class="form-control">
+>>>>>>> Stashed changes:heritageHub/src/main/resources/templates/addMonument.html
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label" th:text="${bodyName}">Name:</label>
                             <input type="text" id="name" name="name" required class="form-control">
                         </div>
 
                         <div class="mb-3 form-check">
                             <input type="checkbox" id="historic" name="historic" class="form-check-input">
-                            <label for="historic" class="form-check-label">Historic</label>
+                            <label for="historic" class="form-check-label" th:text="${bodyHistoric}">Historic</label>
                         </div>
 
                         <div class="mb-3 form-check">
                             <input type="checkbox" id="cultural" name="cultural" class="form-check-input">
-                            <label for="cultural" class="form-check-label">Cultural</label>
+                            <label for="cultural" class="form-check-label" th:text="${bodyCultural}">Cultural</label>
                         </div>
 
                         <div class="mb-3">
-                            <label for="city" class="form-label">City:</label>
+                            <label for="city" class="form-label" th:text="${bodyCity}">City:</label>
                             <input type="text" id="city" name="city" required class="form-control">
                         </div>
 
                         <div class="mb-3">
-                            <label for="rating" class="form-label">Rating (0-5):</label>
+                            <label for="rating" class="form-label" th:text="${bodyRating}">Rating (0-5):</label>
                             <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="0" class="form-control">
                         </div>
 
                         <div class="mb-3">
-                            <label for="numRatings" class="form-label">Number of Ratings:</label>
+                            <label for="numRatings" class="form-label" th:text="${bodyNumRatings}">Number of Ratings:</label>
                             <input type="number" id="numRatings" name="numRatings" min="0" value="0" class="form-control">
                         </div>
 
@@ -101,7 +111,7 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
-            <button class="btn btn-primary" onclick="goBack()">Back</button>
+            <button class="btn btn-primary" onclick="goBack()" th:text="${backButton}">Back</button>
         </div>
     </div>
 </div>
