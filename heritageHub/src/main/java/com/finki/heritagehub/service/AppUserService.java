@@ -10,5 +10,5 @@ public interface AppUserService {
     AppUser findByUsername(String username);
     AppUser findByEmail(String email);
     List<AppUser> listAll();
-    //AppUser login(String username, String password);
+    AppUser login(String username, String password);
 }

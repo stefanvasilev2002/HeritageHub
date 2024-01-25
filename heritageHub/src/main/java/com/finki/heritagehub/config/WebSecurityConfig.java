@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
@@ -20,23 +21,36 @@ public class WebSecurityConfig {
     public WebSecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
+    //@Bean
+    // TODO: If you are implementing the security requirements, remove this following bean creation
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().anyRequest();
+    }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception  {
 
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( (requests) -> requests
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/"))
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/"),
+                                AntPathRequestMatcher.antMatcher("/category/**"),
+                                AntPathRequestMatcher.antMatcher("/monument/**"),
+                                AntPathRequestMatcher.antMatcher("/about-us"),
+                                AntPathRequestMatcher.antMatcher("/login"))
                         .permitAll()
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/tasks/{id}/mark_done"))
-                        .hasRole("DEVELOPER")
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/edit/{id}"),
+                                AntPathRequestMatcher.antMatcher("/editMonument"),
+                                AntPathRequestMatcher.antMatcher("/deleteMonument"))
+                        .hasRole("ADMIN")
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/add"),
+                                AntPathRequestMatcher.antMatcher("/addRating"))
+                        .hasRole("USER")
                         .anyRequest()
                         .permitAll()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
-                        .failureUrl("/login?error=BadCredentials")
                         .defaultSuccessUrl("/", true)
                 )
                 .logout((logout) -> logout
@@ -44,7 +58,7 @@ public class WebSecurityConfig {
                         .clearAuthentication(true)
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
-                        .logoutSuccessUrl("/")
+                        .logoutSuccessUrl("/login")
                 );
 
         return http.build();

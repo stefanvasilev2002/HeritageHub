@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Админ Логирање</title>
+    <title th:text="${title}">User Registration</title>
     <link rel="stylesheet" href="/main.css">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
     <div class="container-xl">
-        <a href="/mk" class="navbar-brand">
-            <span class="fw-bold text-secondary">HeritageHub</span>
+        <a href="/" class="navbar-brand">
+            <span class="fw-bold text-secondary" th:text="${navHeader}">HeritageHub</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,28 +19,28 @@
         <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
             <ul class="navbar-nav nav-tabs mr-auto ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/mk">Почетна</a>
+                    <a class="nav-link" href="/" th:text="${navHome}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/mk/category/historical}">Историски</a>
+                    <a class="nav-link" th:href="@{/category/historical}" th:text="${navHistorical}">Historical</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/mk/category/cultural}">Културни</a>
+                    <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
                 </li>
                 <li class="nav-item">
                     <span style="font-size: smaller;">
-                        <a href="#" style="color: red;">MK</a>
-                        <a th:href="@{/login/{id}(id=${id})}" style="color: blue;">EN</a>
+                        <a href="/mk" style="color: red;">MK</a>
+                        <a href="/en" style="color: blue;">EN</a>
                     </span>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
-                    <a class="nav-link" href="/mk/about-us">За нас</a>
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
                 </li>
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
-        <a href="/mk/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">За нас</a>
+        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton" th:text="${navAboutUs}">About us</a>
     </div>
 </nav>
 
@@ -48,30 +48,32 @@
 <div th:if="${hasError}" class="alert alert-danger" role="alert">
     <span th:text="${error}"></span>
 </div>
-<form method="post" action="/mk/login" class="container mt-4">
-    <!-- Hidden field to pass the 'id' attribute from the model -->
-    <input type="hidden" id="id" name="id" th:value="${id}">
+<form method="post" th:action="@{'/register'}" class="container mt-4">
 
-    <!-- Username and Password input fields -->
+    <!-- Username, Email, and Password input fields -->
     <div class="mb-3">
-        <label for="username" class="form-label">Корисничко име:</label>
-        <input type="text" class="form-control" id="username" name="username">
+        <label for="username" class="form-label" th:text="${bodyUsername}">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" required>
     </div>
 
     <div class="mb-3">
-        <label for="password" class="form-label">Лозинка:</label>
-        <input type="password" class="form-control" id="password" name="password">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
     </div>
 
-    <!-- Login button -->
-    <button type="submit" class="btn btn-primary">Логирај се</button>
+    <div class="mb-3">
+        <label for="password" class="form-label"  th:text="${bodyPassword}">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+
+    <!-- Register button -->
+    <button type="submit" class="btn btn-primary" th:text="${bodyRegister}">Register</button>
 </form>
-
 
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
-            <button class="btn btn-primary" onclick="goBack()">Назад</button>
+            <button class="btn btn-primary" th:text="${backButton}" onclick="goBack()">Back</button>
         </div>
     </div>
 </div>
@@ -84,3 +86,4 @@
 <script src="/visibilityToggle.js"></script>
 </body>
 </html>
+e

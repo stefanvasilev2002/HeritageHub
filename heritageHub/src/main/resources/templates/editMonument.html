@@ -29,18 +29,23 @@
                 </li>
                 <li class="nav-item">
                     <span style="font-size: smaller;">
-                        <a th:href="@{/mk/edit/{id}(id=${monument.id})}" style="color: red;">MK</a>
-                        <a href="#" style="color: blue;">EN</a>
+                        <a href="/mk" style="color: red;">MK</a>
+                        <a href="/en" style="color: blue;">EN</a>
                     </span>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
                     <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
                 </li>
+                <li class="nav-item d-md-none">
+                    <a href="/logout" class="btn btn-secondary" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
+                </li>
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
         <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton" th:text="${navAboutUs}">About us</a>
+        <a href="/login" class="btn btn-secondary d-none d-md-block" id="loginButton" th:text="${navLogIn}" sec:authorize="!isAuthenticated()">Log In</a>
+        <a href="/logout" class="btn btn-secondary d-none d-md-block" id="logoutButton" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
     </div>
 </nav>
 <div class="container mt-5">

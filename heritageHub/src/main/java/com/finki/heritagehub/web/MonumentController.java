@@ -4,7 +4,6 @@ import com.finki.heritagehub.model.Monument;
 import com.finki.heritagehub.service.LanguageService;
 import com.finki.heritagehub.service.MonumentService;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class MonumentController {
@@ -26,50 +24,42 @@ public class MonumentController {
     }
 
     @GetMapping("/")
-    public String showCategories(Model model) {
+    public String showCategories(Model model, HttpServletRequest request) {
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+        languageService.changeCategories(model, request);
+
         model.addAttribute("monumentList", monumentService.getAllOrderedMonuments());
-        model.addAttribute("monumentList", monumentService.getAllOrderedMonuments());
-        model.addAttribute("numHistoricalMonuments", monumentService.getAllMonumentsByCategory("historical").size());
-        model.addAttribute("numCulturalMonuments", monumentService.getAllMonumentsByCategory("cultural").size());
-        //laguageService.changeCategories(model);
+        model.addAttribute("numHistoricalMonuments", monumentService
+                                                                .getAllMonumentsByCategory("historical").size());
+        model.addAttribute("numCulturalMonuments", monumentService
+                                                                .getAllMonumentsByCategory("cultural").size());
+
         return "categories";
     }
 
     @GetMapping("/category/{category}")
-    public String showMonumentsByCategory(@PathVariable String category, Model model) {
-        List<Monument> monuments = monumentService.getAllMonumentsByCategory(category);
-        model.addAttribute("monuments", monuments);
+    public String showMonumentsByCategory(@PathVariable String category,
+                                          Model model,
+                                          HttpServletRequest request) {
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+        languageService.changeMonuments(model, request);
+
+        model.addAttribute("monuments", monumentService
+                                                    .getAllMonumentsByCategory(category));
         model.addAttribute("category",category);
+
         return "monuments";
     }
     @GetMapping("/category/search")
     public String search(@RequestParam(required = false) String searchQueryName,
                          @RequestParam(required = false) String searchQueryCity,
                          @RequestParam String category,
-                         Model model) {
-        List<Monument> monuments = monumentService.getAllMonumentsByCategory(category);
-        if (searchQueryCity == null && searchQueryName != null){
-            monuments = monuments.stream()
-                    .filter(x-> x.getName().toLowerCase().contains(searchQueryName.toLowerCase()))
-                    .collect(Collectors.toList());
-        }
-        else if (searchQueryName == null && searchQueryCity != null){
-            monuments = monuments.stream()
-                    .filter(x-> x.getCity().toLowerCase().contains(searchQueryCity.toLowerCase()))
-                    .collect(Collectors.toList());
-        }
-        else {
-            monuments = monuments.stream()
-                    .filter(x-> x.getName()
-                            .toLowerCase()
-                            .contains(searchQueryName
-                                    .toLowerCase()) &&
-                            x.getCity()
-                            .toLowerCase()
-                                    .contains(searchQueryCity.toLowerCase()))
-                    .collect(Collectors.toList());
-        }
+                         Model model,
+                         HttpServletRequest request) {
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+        languageService.changeMonuments(model, request);
 
+        List<Monument> monuments = monumentService.filterMonuments(searchQueryCity, searchQueryName);
         model.addAttribute("monuments", monuments);
         model.addAttribute("category", category);
         return "monuments";
@@ -78,6 +68,9 @@ public class MonumentController {
     public String showMonumentDetails(@PathVariable Long id,
                                       Model model,
                                       HttpServletRequest request) {
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+        languageService.changeMonumentDetails(model, request);
+        //ToDO
         Boolean rated = (Boolean) request.getSession().getAttribute(String.format("isRated%d",id));
         Double rating = (Double) request.getSession().getAttribute(String.format("rating%d",id));
         model.addAttribute("rated", rated);
@@ -87,12 +80,19 @@ public class MonumentController {
         return "monumentDetails";
     }
     @GetMapping("/about-us")
-    public String showAboutUs(){
+    public String showAboutUs(Model model,
+                              HttpServletRequest request){
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+        languageService.changeAboutUs(model, request);
         return "about-us";
     }
 
     @GetMapping("/add")
-    public String showAddForm(){
+    public String showAddForm(Model model,
+                              HttpServletRequest request){
+        languageService.changeAddMonument(model, request);
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+
         return "addMonument";
     }
     @PostMapping("/add")
@@ -106,7 +106,7 @@ public class MonumentController {
             @RequestParam(defaultValue = "0") double rating,
             @RequestParam(defaultValue = "0") int numRatings
     ) {
-        monumentService.save(latitude,longitude,name,historic,cultural,city,rating,numRatings, null);
+        monumentService.save(latitude,longitude,name,historic,cultural,city,rating,numRatings);
         return "redirect:/";
     }
     @PostMapping("/addRating")
@@ -118,8 +118,9 @@ public class MonumentController {
         if(rating >= 0 && rating <= 5){
             request.getSession().setAttribute(String.format("isRated%d", monumentId), true);
             request.getSession().setAttribute(String.format("rating%d",monumentId), rating);
-            Monument monument = monumentService.addRatingById(monumentId, rating);
+            monumentService.addRatingById(monumentId, rating);
         }
+
         return "redirect:/monument/" + monumentId;
 
     }
@@ -127,6 +128,9 @@ public class MonumentController {
     public String editMonument(@PathVariable Long id,
                                Model model,
                                HttpServletRequest request){
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+        languageService.changeEditMonument(model, request);
+
         Monument monument = monumentService.getMonumentById(id);
         if(monument == null){
             model.addAttribute("hasError", true);
@@ -134,6 +138,7 @@ public class MonumentController {
             return "editMonument";
         }
         model.addAttribute("monument", monument);
+
         return "editMonument";
     }
     @PostMapping("/editMonument")
@@ -151,32 +156,29 @@ public class MonumentController {
 
         return "redirect:/monument/" + monument.getId();
     }
-    @PostMapping("/deleteMonument")
-    public String deleteMonument(@RequestParam Long monumentId,
+    @PostMapping("/deleteMonument/{id}")
+    public String deleteMonument(@PathVariable Long id,
                                  HttpServletRequest request){
+        //todo
         if(request.getSession().getAttribute("isLogged") == null || !(Boolean) request.getSession().getAttribute("isLogged")){
-            return "redirect:/login/" + monumentId;
+            return "redirect:/login/" + id;
         }
-        monumentService.deleteMonument(monumentId);
+        monumentService.deleteMonument(id);
         return "redirect:/";
     }
-    @PostMapping("/mk")
-    String changeLanguageMacedonian(HttpServletRequest request, Model model){
-        request.setAttribute("lang", "mk");
-        String pathInfo = request.getPathInfo();
+    @GetMapping("/mk")
+    String changeLanguageMacedonian(HttpServletRequest request){
+        request.getSession().setAttribute("lang", "mk");
+        String pathInfo = (String) request.getSession().getAttribute("pathInfo");
 
-        languageService.changeLanguage(model,request);
-
-        return "redirect:/" + pathInfo;
+        return "redirect:" + pathInfo;
     }
-    @PostMapping("/en")
-    String changeLanguageEnglish(HttpServletRequest request, Model model){
-        request.setAttribute("lang", "en");
-        String pathInfo = request.getPathInfo();
+    @GetMapping("/en")
+    String changeLanguageEnglish(HttpServletRequest request){
 
-        languageService.changeLanguage(model,request);
+        request.getSession().setAttribute("lang", "en");
+        String pathInfo = (String) request.getSession().getAttribute("pathInfo");
 
-
-        return "redirect:/" + pathInfo;
+        return "redirect:" + pathInfo;
     }
 }

@@ -5,10 +5,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.Objects;
+
 @Service
 public class LanguageServiceImpl implements LanguageService {
+    private static String language;
 
-
+    public void changeLanguage(){
+        if (Objects.equals(language, "en")){
+            language = "mk";
+        }
+        else {
+            language = "en";
+        }
+    }
     @Override
     public void changeMonuments(Model model, HttpServletRequest request) {
         setDefaultLanguage(request);
@@ -159,6 +169,8 @@ public class LanguageServiceImpl implements LanguageService {
         model.addAttribute("navHistorical", "Historical");
         model.addAttribute("navCultural", "Cultural");
         model.addAttribute("navAboutUs", "About us");
+        model.addAttribute("navLogIn", "Log In");
+        model.addAttribute("navLogOut", "Log Out");
     }
     private void setNavMacedonian(Model model){
         model.addAttribute("navHeader", "HeritageHub");
@@ -166,6 +178,8 @@ public class LanguageServiceImpl implements LanguageService {
         model.addAttribute("navHistorical", "Историски");
         model.addAttribute("navCultural", "Културни");
         model.addAttribute("navAboutUs", "За нас");
+        model.addAttribute("navLogIn", "Логирај се");
+        model.addAttribute("navLogOut", "Одјава");
     }
     @Override
     public void changeLogin(Model model, HttpServletRequest request) {
@@ -176,6 +190,7 @@ public class LanguageServiceImpl implements LanguageService {
             model.addAttribute("bodyUsername", "Username:");
             model.addAttribute("bodyPassword", "Password:");
             model.addAttribute("bodyLogIn", "Log in");
+            model.addAttribute("bodyRegister", "Register");
             model.addAttribute("backButton", "Back");
         }else if(request.getSession().getAttribute("lang").equals("mk")){
             model.addAttribute("title", "Админ Логирање");
@@ -183,6 +198,7 @@ public class LanguageServiceImpl implements LanguageService {
             model.addAttribute("bodyUsername", "Корисничко име:");
             model.addAttribute("bodyPassword", "Лозинка:");
             model.addAttribute("bodyLogIn", "Логирај се");
+            model.addAttribute("bodyRegister", "Регистрирај се");
             model.addAttribute("backButton", "Назад");
         }
     }
@@ -226,29 +242,34 @@ public class LanguageServiceImpl implements LanguageService {
             model.addAttribute("backButton", "Назад");
         }
     }
+
     @Override
-    public void changeLanguage(Model model, HttpServletRequest request){
-        setDefaultLanguage(request);
-        String pathInfo = request.getPathInfo();
-        if(pathInfo.startsWith("/edit")){
-            this.changeEditMonument(model, request);
-        }
-        if(pathInfo.startsWith("/add")){
-            this.changeAddMonument(model, request);
-        }
-        if(pathInfo.startsWith("/about-us")){
-            this.changeAboutUs(model,request);
-        }
-        if(pathInfo.startsWith("/category")){
-            this.changeMonuments(model,request);
-        }
-        if(pathInfo.equals("/")){
-            this.changeCategories(model,request);
-        }
-        if(pathInfo.startsWith("/monument")){
-            this.changeMonumentDetails(model, request);
-        }
+    public void changeRegister(Model model, HttpServletRequest request) {
+
     }
+//    @Override
+//    public void changeLanguage(Model model, HttpServletRequest request){
+//        setDefaultLanguage(request);
+//        String pathInfo = request.getPathInfo();
+//        if(pathInfo.startsWith("/edit")){
+//            this.changeEditMonument(model, request);
+//        }
+//        if(pathInfo.startsWith("/add")){
+//            this.changeAddMonument(model, request);
+//        }
+//        if(pathInfo.startsWith("/about-us")){
+//            this.changeAboutUs(model,request);
+//        }
+//        if(pathInfo.startsWith("/category")){
+//            this.changeMonuments(model,request);
+//        }
+//        if(pathInfo.equals("/")){
+//            this.changeCategories(model,request);
+//        }
+//        if(pathInfo.startsWith("/monument")){
+//            this.changeMonumentDetails(model, request);
+//        }
+//    }
 }
 
 

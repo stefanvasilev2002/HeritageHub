@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class MonumentServiceImpl implements MonumentService {
@@ -57,21 +58,28 @@ public class MonumentServiceImpl implements MonumentService {
         monumentRepository.save(monument);
         return monument;
     }
+
+    @Override
+    public Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings) {
+        Monument monument;
+
+        if(numRatings == 0){
+            monument = new Monument(latitude,longitude,name,historic,cultural,city,0,0);
+        }else{
+            monument = new Monument(latitude,longitude,name,historic,cultural,city, rating, numRatings);
+        }
+        return monument;
+
+    }
+
     @Override
     public Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings, Long id){
         Monument monument;
-        if(id == null){
-            if(numRatings == 0){
-                monument = new Monument(latitude,longitude,name,historic,cultural,city,0,0);
-            }else{
-                monument = new Monument(latitude,longitude,name,historic,cultural,city, rating, numRatings);
-            }
+
+        if(numRatings == 0){
+            monument = new Monument(id,latitude,longitude,name,historic,cultural,city,0,0);
         }else{
-            if(numRatings == 0){
-                monument = new Monument(id,latitude,longitude,name,historic,cultural,city,0,0);
-            }else{
-                monument = new Monument(id,latitude,longitude,name,historic,cultural,city, rating, numRatings);
-            }
+            monument = new Monument(id,latitude,longitude,name,historic,cultural,city, rating, numRatings);
         }
         monumentRepository.save(monument);
         return monument;
@@ -80,5 +88,32 @@ public class MonumentServiceImpl implements MonumentService {
     public void deleteMonument(Long id) {
         Monument monument = getMonumentById(id);
         monumentRepository.delete(monument);
+    }
+
+    @Override
+    public List<Monument> filterMonuments(String searchQueryCity, String searchQueryName) {
+        List<Monument> monuments;
+        if (searchQueryCity == null && searchQueryName != null){
+            monuments = getAllMonuments().stream()
+                    .filter(x-> x.getName().toLowerCase().contains(searchQueryName.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+        else if (searchQueryName == null && searchQueryCity != null){
+            monuments = getAllMonuments().stream()
+                    .filter(x-> x.getCity().toLowerCase().contains(searchQueryCity.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+        else {
+            monuments = getAllMonuments().stream()
+                    .filter(x-> x.getName()
+                            .toLowerCase()
+                            .contains(searchQueryName
+                                    .toLowerCase()) &&
+                            x.getCity()
+                                    .toLowerCase()
+                                    .contains(searchQueryCity.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+        return monuments;
     }
 }

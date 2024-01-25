@@ -12,6 +12,7 @@ public interface LanguageService {
     void changeLogin(Model model, HttpServletRequest request);
     void changeCategories(Model model, HttpServletRequest request);
     void changeMonumentDetails(Model model, HttpServletRequest request);
-    void changeLanguage(Model model, HttpServletRequest request);
+    void changeRegister(Model model, HttpServletRequest request);
+    //void changeLanguage(Model model, HttpServletRequest request);
 
 }
