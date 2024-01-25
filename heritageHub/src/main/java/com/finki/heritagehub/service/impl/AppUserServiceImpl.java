@@ -5,7 +5,6 @@ import com.finki.heritagehub.model.RoleUser;
 import com.finki.heritagehub.model.exceptions.*;
 import com.finki.heritagehub.repository.AppUserRepository;
 import com.finki.heritagehub.service.AppUserService;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -39,7 +38,6 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
         if(!(appUserRepository.findByUsername(username).isEmpty() && appUserRepository.findByEmail(email).isEmpty())){
             throw new UserAlreadyExistsException();
         }
-
         return appUserRepository.save(new AppUser(
                 username,
                 email,

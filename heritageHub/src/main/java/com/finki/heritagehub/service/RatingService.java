@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface RatingService {
     double ratingByUserForMonument(AppUser user, Monument monument);
     Optional<Rating> getRatingByUserAndMonument(AppUser user, Monument monument);
-    Rating save(Rating rating);
+    void save(Rating rating);
 }

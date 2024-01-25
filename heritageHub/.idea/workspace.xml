@@ -5,7 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Small dependency fix (maven compiler)">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Rating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/exceptions/InvalidArgumentsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/exceptions/InvalidArgumentsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/repository/MonumentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/repository/MonumentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/LanguageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/RatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/RatingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/EnglishLanguageStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/EnglishLanguageStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/LanguageServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MacedonianLanguageStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MacedonianLanguageStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/RatingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/RatingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about-us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/addMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/addMonument.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/editMonument.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monuments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monuments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <list id="5c44cd70-9c33-4ec1-85d9-cda9b6197728" name="Changes by Aleksandar" comment="" />
     <list id="12e6a889-15f0-48c4-bf27-3852f996b2b5" name="Changes by andre" comment="" />
@@ -74,6 +100,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "extract.method.default.visibility": "private",
     "git-widget-placeholder": "Deployment2",
     "last_opened_file_path": "C:/Users/38978/Desktop/Fax/V semestar/VP/Ispitni zadachi/2021-sept resena",
     "node.js.detected.package.eslint": "true",
@@ -159,7 +186,7 @@
       <workItem from="1706096708607" duration="137000" />
       <workItem from="1706096981961" duration="11777000" />
       <workItem from="1706200409952" duration="9501000" />
-      <workItem from="1706216189650" duration="3091000" />
+      <workItem from="1706216189650" duration="8600000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -273,7 +300,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706219072306</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Small dependency fix (maven compiler)">
+      <option name="closed" value="true" />
+      <created>1706219430169</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1706219430169</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Small dependency fix (maven compiler)">
+      <option name="closed" value="true" />
+      <created>1706220775585</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1706220775585</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,111 +356,5 @@
     <MESSAGE value="Implemented User login and registration. Added security config. Refactored language change" />
     <MESSAGE value="Small dependency fix (maven compiler)" />
     <option name="LAST_COMMIT_MESSAGE" value="Small dependency fix (maven compiler)" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>171</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>172</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>174</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>163</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>164</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>166</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

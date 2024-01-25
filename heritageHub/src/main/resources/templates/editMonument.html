@@ -28,10 +28,17 @@
                     <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
                 </li>
                 <li class="nav-item">
-                    <span style="font-size: smaller;">
-                        <a href="/mk" style="color: red;">MK</a>
-                        <a href="/en" style="color: blue;">EN</a>
-                    </span>
+                    <div class="container mt-2">
+                        <div class="row justify-content-end">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <a href="/mk" class="btn btn-sm btn-danger me-2">MK</a>
+                                    <span class="text-muted">|</span>
+                                    <a href="/en" class="btn btn-sm btn-primary ms-2">EN</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">

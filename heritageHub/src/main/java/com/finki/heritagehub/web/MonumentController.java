@@ -63,7 +63,7 @@ public class MonumentController {
         LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
         strategy.changeMonuments(model, request);
 
-        List<Monument> monuments = monumentService.filterMonuments(searchQueryCity, searchQueryName);
+        List<Monument> monuments = monumentService.filterMonuments(searchQueryCity, searchQueryName, category);
         model.addAttribute("monuments", monuments);
         model.addAttribute("category", category);
         return "monuments";
@@ -112,8 +112,7 @@ public class MonumentController {
     @PostMapping("/addRating")
     public String addRating(
             @RequestParam("monumentId") Long monumentId,
-            @RequestParam double rating,
-            HttpServletRequest request) {
+            @RequestParam double rating) {
         monumentService.addRatingById(monumentId, rating);
 
         return "redirect:/monument/" + monumentId;
@@ -144,11 +143,9 @@ public class MonumentController {
                                @RequestParam String name,
                                @RequestParam(required = false) boolean historic,
                                @RequestParam(required = false) boolean cultural,
-                               @RequestParam String city,
-                               @RequestParam double rating,
-                               @RequestParam int numRatings) {
+                               @RequestParam String city) {
 
-        Monument monument = monumentService.edit(latitude, longitude, name, historic, cultural, city, rating, numRatings, monumentId);
+        Monument monument = monumentService.edit(latitude, longitude, name, historic, cultural, city, monumentId);
 
         return "redirect:/monument/" + monument.getId();
     }

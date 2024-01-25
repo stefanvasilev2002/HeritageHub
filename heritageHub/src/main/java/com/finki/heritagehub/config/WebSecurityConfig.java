@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,23 +20,12 @@ public class WebSecurityConfig {
     public WebSecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-    //@Bean
-    // TODO: If you are implementing the security requirements, remove this following bean creation
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().anyRequest();
-    }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception  {
 
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( (requests) -> requests
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/"),
-                                AntPathRequestMatcher.antMatcher("/category/**"),
-                                AntPathRequestMatcher.antMatcher("/monument/**"),
-                                AntPathRequestMatcher.antMatcher("/about-us"),
-                                AntPathRequestMatcher.antMatcher("/login"))
-                        .permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/edit/{id}"),
                                 AntPathRequestMatcher.antMatcher("/editMonument"),
                                 AntPathRequestMatcher.antMatcher("/deleteMonument"))

@@ -1,31 +1,26 @@
 package com.finki.heritagehub.service;
 
 import com.finki.heritagehub.model.Monument;
-import com.finki.heritagehub.repository.MonumentRepository;
 
 import java.util.List;
-import java.util.Objects;
 
 public interface MonumentService {
     List<Monument> getAllMonumentsByCategory(String category);
 
     Monument getMonumentById(Long id);
 
-    void loadMonuments();
-
     List<Monument> getAllMonuments();
 
     List<Monument> getAllOrderedMonuments();
 
-    Monument addRatingById(Long id, double rating);
+    void addRatingById(Long id, double rating);
 
-    Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city);
-    //Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings, Long id);
+    void save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city);
 
     void deleteMonument(Long id);
 
-    List<Monument> filterMonuments(String searchQueryCity, String searchQueryName);
+    List<Monument> filterMonuments(String searchQueryCity, String searchQueryName, String category);
 
-    Monument edit(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings, Long monumentId);
+    Monument edit(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, Long monumentId);
 }
 

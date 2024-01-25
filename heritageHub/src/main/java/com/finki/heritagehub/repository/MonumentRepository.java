@@ -7,8 +7,11 @@ import java.util.List;
 
 public interface MonumentRepository extends JpaRepository<Monument, Long> {
     Monument findMonumentById(Long id);
-    void deleteMonumentById(long id);
     List<Monument> findAllByOrderById();
     List<Monument> findAllByHistoricIsTrueOrderById();
     List<Monument> findAllByCulturalIsTrueOrderById();
+    List<Monument> findAllByCityContainingAndNameContaining(String city, String name);
+    List<Monument> findAllByNameContaining(String name);
+    List<Monument> findAllByCityContaining(String city);
+
 }

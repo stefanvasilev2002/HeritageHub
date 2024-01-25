@@ -40,15 +40,7 @@ public class EnglishLanguageStrategy implements LanguageSelectionStrategy {
         model.addAttribute("title", "Edit Monument");
         setNavEnglish(model);
         model.addAttribute("bodyHeader", "Edit Monument");
-        model.addAttribute("bodyLatitude", "Latitude:");
-        model.addAttribute("bodyLongitude", "Longitude:");
-        model.addAttribute("bodyName", "Name:");
-        model.addAttribute("bodyHistoric", "Historic");
-        model.addAttribute("bodyCultural", "Cultural");
-        model.addAttribute("bodyCity", "City:");
-        model.addAttribute("bodyRating", "Rating (0-5):");
-        model.addAttribute("bodyNumRatings", "Number of Ratings:");
-        model.addAttribute("backButton", "Back");
+        changeAddEditForm(model);
     }
 
     @Override
@@ -56,6 +48,9 @@ public class EnglishLanguageStrategy implements LanguageSelectionStrategy {
         model.addAttribute("title", "Create Monument");
         setNavEnglish(model);
         model.addAttribute("bodyHeader", "Create Monument");
+        changeAddEditForm(model);
+    }
+    private void changeAddEditForm(Model model) {
         model.addAttribute("bodyLatitude", "Latitude:");
         model.addAttribute("bodyLongitude", "Longitude:");
         model.addAttribute("bodyName", "Name:");
@@ -66,7 +61,6 @@ public class EnglishLanguageStrategy implements LanguageSelectionStrategy {
         model.addAttribute("bodyNumRatings", "Number of Ratings:");
         model.addAttribute("backButton", "Back");
     }
-
     @Override
     public void changeAboutUs(Model model, HttpServletRequest request) {
         model.addAttribute("title", "About us");
@@ -86,7 +80,7 @@ public class EnglishLanguageStrategy implements LanguageSelectionStrategy {
 
     @Override
     public void changeLogin(Model model, HttpServletRequest request) {
-        model.addAttribute("title", "Admin Login");
+        model.addAttribute("title", "Login");
         setNavEnglish(model);
         model.addAttribute("bodyUsername", "Username:");
         model.addAttribute("bodyPassword", "Password:");

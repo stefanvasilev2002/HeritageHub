@@ -40,22 +40,17 @@ public class MacedonianLanguageStrategy implements LanguageSelectionStrategy {
         model.addAttribute("title", "Промени Споменик");
         setNavMacedonian(model);
         model.addAttribute("bodyHeader", "Измени споменик");
-        model.addAttribute("bodyLatitude", "Географска ширина:");
-        model.addAttribute("bodyLongitude", "Географска должина:");
-        model.addAttribute("bodyName", "Име:");
-        model.addAttribute("bodyHistoric", "Историско");
-        model.addAttribute("bodyCultural", "Културно");
-        model.addAttribute("bodyCity", "Град:");
-        model.addAttribute("bodyRating", "Оцена (0-5):");
-        model.addAttribute("bodyNumRatings", "Број на оцени:");
-        model.addAttribute("backButton", "Назад");
+        changeAddEditForm(model);
     }
-
     @Override
     public void changeAddMonument(Model model, HttpServletRequest request) {
         model.addAttribute("title", "Додади споменик");
         setNavMacedonian(model);
         model.addAttribute("bodyHeader", "Направи споменик");
+        changeAddEditForm(model);
+    }
+
+    private void changeAddEditForm(Model model) {
         model.addAttribute("bodyLatitude", "Географска ширина:");
         model.addAttribute("bodyLongitude", "Географска должина:");
         model.addAttribute("bodyName", "Име:");
@@ -66,7 +61,6 @@ public class MacedonianLanguageStrategy implements LanguageSelectionStrategy {
         model.addAttribute("bodyNumRatings", "Број на оцени:");
         model.addAttribute("backButton", "Назад");
     }
-
     @Override
     public void changeAboutUs(Model model, HttpServletRequest request) {
         model.addAttribute("title", "За нас");
@@ -86,7 +80,7 @@ public class MacedonianLanguageStrategy implements LanguageSelectionStrategy {
 
     @Override
     public void changeLogin(Model model, HttpServletRequest request) {
-        model.addAttribute("title", "Админ Логирање");
+        model.addAttribute("title", "Логирање");
         setNavMacedonian(model);
         model.addAttribute("bodyUsername", "Корисничко име:");
         model.addAttribute("bodyPassword", "Лозинка:");

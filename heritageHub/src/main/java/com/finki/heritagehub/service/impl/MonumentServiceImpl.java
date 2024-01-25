@@ -7,12 +7,10 @@ import com.finki.heritagehub.service.AppUserService;
 import com.finki.heritagehub.service.MonumentFactory;
 import com.finki.heritagehub.service.MonumentService;
 import com.finki.heritagehub.service.RatingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -24,14 +22,13 @@ public class MonumentServiceImpl implements MonumentService {
     private final MonumentFactory monumentFactory;
     private final RatingService ratingService;
     private final AppUserService appUserService;
-    @Autowired
     public MonumentServiceImpl(MonumentRepository monumentRepository, CSVLoaderServiceImpl csvLoaderServiceImpl, MonumentFactory monumentFactory, RatingService ratingService, AppUserService appUserService) {
         this.monumentRepository = monumentRepository;
         this.csvLoaderServiceImpl = csvLoaderServiceImpl;
         this.monumentFactory = monumentFactory;
         this.ratingService = ratingService;
         this.appUserService = appUserService;
-        //monumentRepository.deleteAll();
+
         //loadMonuments();
     }
     @Override
@@ -45,8 +42,8 @@ public class MonumentServiceImpl implements MonumentService {
     public Monument getMonumentById(Long id) {
         return monumentRepository.findById(id).orElse(null);
     }
-//    @PostConstruct
-    @Override
+
+    //    @PostConstruct
     public void loadMonuments() {
         // Load from CSV and save to the database
         List<Monument> monuments = csvLoaderServiceImpl.loadMonumentsFromCsv();
@@ -61,13 +58,12 @@ public class MonumentServiceImpl implements MonumentService {
         return monumentRepository.findAllByOrderById();
     }
     @Override
-    public Monument addRatingById(Long id, double rating) {
-        AppUser user = null;
+    public void addRatingById(Long id, double rating) {
+        AppUser user;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username=null;
-        // Check if the user is authenticated
+
         if (authentication != null && authentication.isAuthenticated()) {
-            // Get the username of the authenticated user
             username = authentication.getName();
         }
         user = appUserService.findByUsername(username);
@@ -87,25 +83,25 @@ public class MonumentServiceImpl implements MonumentService {
             rating1.setValue(rating);
             ratingService.save(rating1);
         }
+        monumentRepository.save(monument);
+    }
+    @Override
+    public Monument edit(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, Long id){
+        Monument monument = monumentRepository.findMonumentById(id);
+
+        monument.setLatitude(latitude);
+        monument.setLongitude(longitude);
+        monument.setName(name);
+        monument.setHistoric(historic);
+        monument.setCultural(cultural);
+        monument.setCity(city);
+
         return monumentRepository.save(monument);
     }
     @Override
-    public Monument edit(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings, Long id){
-        Monument monument;
-
-        if(numRatings == 0){
-            monument = new Monument(id,latitude,longitude,name,historic,cultural,city,0,0);
-        }else{
-            monument = new Monument(id,latitude,longitude,name,historic,cultural,city, rating, numRatings);
-        }
-        monumentRepository.save(monument);
-        return monument;
-    }
-    @Override
-    public Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city) {
+    public void save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city) {
         Monument monument = monumentFactory.createMonument(latitude, longitude, name, historic, cultural, city);
         monumentRepository.save(monument);
-        return monument;
     }
     @Override
     public void deleteMonument(Long id) {
@@ -114,29 +110,22 @@ public class MonumentServiceImpl implements MonumentService {
     }
 
     @Override
-    public List<Monument> filterMonuments(String searchQueryCity, String searchQueryName) {
+    public List<Monument> filterMonuments(String searchQueryCity, String searchQueryName, String category) {
         List<Monument> monuments;
-        if (searchQueryCity == null && searchQueryName != null){
-            monuments = getAllMonuments().stream()
-                    .filter(x-> x.getName().toLowerCase().contains(searchQueryName.toLowerCase()))
-                    .collect(Collectors.toList());
+        if (searchQueryCity != null && searchQueryName != null){
+            monuments =  monumentRepository.findAllByCityContainingAndNameContaining(searchQueryCity, searchQueryName);
         }
-        else if (searchQueryName == null && searchQueryCity != null){
-            monuments = getAllMonuments().stream()
-                    .filter(x-> x.getCity().toLowerCase().contains(searchQueryCity.toLowerCase()))
-                    .collect(Collectors.toList());
+        else if (searchQueryCity != null){
+            monuments = monumentRepository.findAllByCityContaining(searchQueryCity);
         }
-        else {
-            monuments = getAllMonuments().stream()
-                    .filter(x-> x.getName()
-                            .toLowerCase()
-                            .contains(searchQueryName
-                                    .toLowerCase()) &&
-                            x.getCity()
-                                    .toLowerCase()
-                                    .contains(searchQueryCity.toLowerCase()))
-                    .collect(Collectors.toList());
+        else if (searchQueryName != null){
+            monuments = monumentRepository.findAllByNameContaining(searchQueryName);
         }
-        return monuments;
+        else monuments = monumentRepository.findAll();
+
+        if (category.equals("historical")){
+             return monuments.stream().filter(Monument::isHistoric).collect(Collectors.toList());
+        }
+        return monuments.stream().filter(Monument::isCultural).collect(Collectors.toList());
     }
 }

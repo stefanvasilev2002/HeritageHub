@@ -1,6 +1,5 @@
 package com.finki.heritagehub.model;
 
-import com.finki.heritagehub.service.MonumentFactory;
 import jakarta.persistence.*;
 import lombok.Data;
 

@@ -40,10 +40,17 @@
                     <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
                 </li>
                 <li class="nav-item">
-                    <span style="font-size: smaller;">
-                        <a href="/mk" style="color: red;">MK</a>
-                        <a href="/en" style="color: blue;">EN</a>
-                    </span>
+                    <div class="container mt-2">
+                        <div class="row justify-content-end">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <a href="/mk" class="btn btn-sm btn-danger me-2">MK</a>
+                                    <span class="text-muted">|</span>
+                                    <a href="/en" class="btn btn-sm btn-primary ms-2">EN</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
@@ -89,34 +96,20 @@
         <input type="hidden" id="monumentId" name="monumentId" th:value="${monument.id}">
         <div class="input-group">
             <label for="rating" class="input-group-text me-2" style="width: auto;" th:text="${bodyRating}">Rating (0-5):</label>
-            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="0" class="form-control me-2">
+            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" value="0" class="form-control me-2" oninput="validateNumericInput(this)">
             <button id="rateButton" type="submit" class="btn btn-success" th:text="${bodySubmitButton}">Submit</button>
         </div>
     </form>
 </div>
 
-
-
-
-
-
-
-
-
-
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
             <button class="btn btn-primary" th:text="${backButton}" onclick="goBack()">Back</button>
-            <!-- Button to go to /login/{id} -->
             <a th:href="@{/edit/{id}(id=${monument.id})}" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">Edit Monument</a>
         </div>
     </div>
 </div>
-
-
-
-
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -143,6 +136,14 @@
 <script>
     function goBack() {
         window.history.back();
+    }
+    function validateNumericInput(input) {
+        // Enforce the range within JavaScript
+        if (input.value < 0) {
+            input.value = 0;
+        } else if (input.value > 5) {
+            input.value = 5;
+        }
     }
 </script>
 </body>

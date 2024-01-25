@@ -21,7 +21,8 @@
             <span class="fw-bold text-secondary" th:text="${navHeader}">HeritageHub</span>
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
@@ -36,10 +37,17 @@
                     <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
                 </li>
                 <li class="nav-item">
-                    <span style="font-size: smaller;">
-                        <a href="/mk" style="color: red;">MK</a>
-                        <a href="/en" style="color: blue;">EN</a>
-                    </span>
+                    <div class="container mt-2">
+                        <div class="row justify-content-end">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <a href="/mk" class="btn btn-sm btn-danger me-2">MK</a>
+                                    <span class="text-muted">|</span>
+                                    <a href="/en" class="btn btn-sm btn-primary ms-2">EN</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
@@ -54,9 +62,12 @@
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
-        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton" th:text="${navAboutUs}">About us</a>
-        <a href="/login" class="btn btn-secondary d-none d-md-block" id="loginButton" th:text="${navLogIn}" sec:authorize="!isAuthenticated()">Log In</a>
-        <a href="/logout" class="btn btn-secondary d-none d-md-block" id="logoutButton" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
+        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton"
+           th:text="${navAboutUs}">About us</a>
+        <a href="/login" class="btn btn-secondary d-none d-md-block" id="loginButton"
+           th:text="${navLogIn}" sec:authorize="!isAuthenticated()">Log In</a>
+        <a href="/logout" class="btn btn-secondary d-none d-md-block" id="logoutButton"
+           th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
     </div>
 </nav>
 <div class="text-center">
@@ -104,15 +115,13 @@
     var latitudeElements = document.getElementsByClassName('latitude');
     var longitudeElements = document.getElementsByClassName('longitude');
 
-    var map = L.map('map').setView([41.6086, 21.7453], 8); // Coordinates for North Macedonia, zoom level 8
+    var map = L.map('map').setView([41.6086, 21.7453], 8);
 
-    // Adding OpenStreetMap tiles as the base layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Iterating through elements to add markers for each monument
     for (var i = 0; i < latitudeElements.length; i++) {
         var latitude = latitudeElements[i].getAttribute('value');
         var longitude = longitudeElements[i].getAttribute('value');
@@ -120,6 +129,5 @@
         L.marker([latitude, longitude]).addTo(map)
     }
 </script>
-<!-- Leaflet JavaScript -->
 </body>
 </html>
