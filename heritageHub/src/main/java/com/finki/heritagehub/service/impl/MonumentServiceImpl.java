@@ -105,8 +105,7 @@ public class MonumentServiceImpl implements MonumentService {
     }
     @Override
     public void deleteMonument(Long id) {
-        Monument monument = getMonumentById(id);
-        monumentRepository.delete(monument);
+        monumentRepository.deleteById(id);
     }
 
     @Override
