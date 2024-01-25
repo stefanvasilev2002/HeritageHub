@@ -32,7 +32,7 @@ public class MonumentServiceImpl implements MonumentService {
         this.ratingService = ratingService;
         this.appUserService = appUserService;
         //monumentRepository.deleteAll();
-        loadMonuments();
+        //loadMonuments();
     }
     @Override
     public List<Monument> getAllMonumentsByCategory(String category) {
