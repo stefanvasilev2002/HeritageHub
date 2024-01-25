@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Small dependency fix (maven compiler)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <list id="5c44cd70-9c33-4ec1-85d9-cda9b6197728" name="Changes by Aleksandar" comment="" />
@@ -160,7 +159,7 @@
       <workItem from="1706096708607" duration="137000" />
       <workItem from="1706096981961" duration="11777000" />
       <workItem from="1706200409952" duration="9501000" />
-      <workItem from="1706216189650" duration="2778000" />
+      <workItem from="1706216189650" duration="3091000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -266,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706217307765</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Small dependency fix (maven compiler)">
+      <option name="closed" value="true" />
+      <created>1706219072306</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1706219072306</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
