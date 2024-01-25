@@ -1,10 +1,7 @@
 package com.finki.heritagehub.web;
-import com.finki.heritagehub.model.exceptions.InvalidAppUserUsernameException;
-import com.finki.heritagehub.model.exceptions.InvalidArgumentsException;
-import com.finki.heritagehub.model.exceptions.InvalidUserCredentialsException;
-import com.finki.heritagehub.model.AppUser;
 import com.finki.heritagehub.service.AppUserService;
-import com.finki.heritagehub.service.LanguageService;
+import com.finki.heritagehub.service.LanguageSelectionStrategy;
+import com.finki.heritagehub.service.LanguageStrategyFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,19 +11,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 public class LoginController {
     private final AppUserService appUserService;
-    private final LanguageService languageService;
+    private final LanguageStrategyFactory languageStrategyFactory;
     private final PasswordEncoder passwordEncoder;
 
-    public LoginController(AppUserService appUserService, LanguageService languageService, PasswordEncoder passwordEncoder) {
+    public LoginController(AppUserService appUserService, LanguageStrategyFactory languageService, PasswordEncoder passwordEncoder) {
         this.appUserService = appUserService;
-        this.languageService = languageService;
+        this.languageStrategyFactory = languageService;
         this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping
     public String loginPage(HttpServletRequest request, Model model){
         request.getSession().setAttribute("pathInfo", request.getRequestURI());
-        languageService.changeLogin(model, request);
+        LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
+        strategy.changeLogin(model, request);
         return "login";
     }
     /*@PostMapping

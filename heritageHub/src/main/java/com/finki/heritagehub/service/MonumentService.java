@@ -19,11 +19,13 @@ public interface MonumentService {
 
     Monument addRatingById(Long id, double rating);
 
-    Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings);
-    Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings, Long id);
+    Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city);
+    //Monument save(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings, Long id);
 
     void deleteMonument(Long id);
 
     List<Monument> filterMonuments(String searchQueryCity, String searchQueryName);
+
+    Monument edit(double latitude, double longitude, String name, boolean historic, boolean cultural, String city, double rating, int numRatings, Long monumentId);
 }
 

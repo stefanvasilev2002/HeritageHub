@@ -4,57 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Implemented User login and registration. Added security config. Refactored language change">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/exceptions/UserAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Rating.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/repository/RatingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/LanguageSelectionStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/LanguageStrategyFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/RatingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/EnglishLanguageStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/LanguageSelectionStrategyImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MacedonianLanguageStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentFactoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/RatingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/AppUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/AppUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Monument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Monument.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/MonumentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/LanguageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/LanguageServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginControllerMacedonian.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentControllerMacedonian.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/filters/LoginFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about-us_macedonian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/addMonument_macedonian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categories_macedonian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editMonument_macedonian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login_macedonian.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails_macedonian.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monuments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monuments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monuments_macedonian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/about-us.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/about-us_macedonian.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/addMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/addMonument.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addMonument_macedonian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/categories_macedonian.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/editMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/editMonument.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/editMonument_macedonian.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login_macedonian.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/monumentDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/monumentDetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/monumentDetails_macedonian.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/monuments.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/monuments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/monuments_macedonian.html" beforeDir="false" />
     </list>
     <list id="5c44cd70-9c33-4ec1-85d9-cda9b6197728" name="Changes by Aleksandar" comment="" />
     <list id="12e6a889-15f0-48c4-bf27-3852f996b2b5" name="Changes by andre" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/LanguageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/LanguageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Monument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Monument.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about-us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/addMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/addMonument.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categories.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editMonument.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/editMonument.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/monuments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/monuments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +58,8 @@
       <list>
         <option value="Dockerfile" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -80,27 +72,86 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
+  </component>
   <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java">
+      <ranges>
+        <range start1="6" end1="6" start2="6" end2="9" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="18" end1="19" start2="21" end2="23" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="20" end1="20" start2="24" end2="25" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="24" end1="25" start2="29" end2="33" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="32" end1="32" start2="40" end2="42" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+      </ranges>
+    </file>
     <file path="$PROJECT_DIR$/src/main/resources/templates/monuments.html">
       <ranges>
-        <range start1="8" end1="8" start2="8" end2="9" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
-        <range start1="14" end1="14" start2="15" end2="16" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
-        <range start1="35" end1="37" start2="37" end2="39" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
-        <range start1="43" end1="43" start2="45" end2="51" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
-        <range start1="47" end1="47" start2="55" end2="57" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
-        <range start1="79" end1="83" start2="89" end2="93" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="92" end1="93" start2="92" end2="93" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="95" end1="95" start2="95" end2="98" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/resources/templates/monumentDetails.html">
+      <ranges>
+        <range start1="83" end1="89" start2="83" end2="83" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="91" end1="92" start2="85" end2="86" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="95" end1="96" start2="89" end2="89" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="100" end1="101" start2="93" end2="93" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/model/Monument.java">
+      <ranges>
+        <range start1="19" end1="20" start2="19" end2="20" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="56" end1="56" start2="56" end2="62" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java">
+      <ranges>
+        <range start1="1" end1="1" start2="1" end2="2" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="2" end1="2" start2="3" end2="4" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="3" end1="3" start2="5" end2="7" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="4" end1="5" start2="8" end2="9" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="6" end1="6" start2="10" end2="13" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="16" end1="17" start2="23" end2="26" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="18" end1="19" start2="27" end2="28" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="21" end1="21" start2="30" end2="33" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="51" end1="52" start2="63" end2="77" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="53" end1="59" start2="78" end2="90" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="60" end1="74" start2="91" end2="91" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="75" end1="76" start2="92" end2="93" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="85" end1="85" start2="102" end2="108" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="5" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="18" end1="19" start2="19" end2="20" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="20" end1="21" start2="21" end2="22" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="22" end1="23" start2="23" end2="24" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="28" end1="29" start2="29" end2="31" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="44" end1="45" start2="46" end2="48" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="59" end1="60" start2="62" end2="64" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="71" end1="77" start2="75" end2="77" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="85" end1="86" start2="85" end2="87" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="92" end1="93" start2="93" end2="93" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="94" end1="94" start2="94" end2="96" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="104" end1="107" start2="106" end2="107" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="108" end1="109" start2="108" end2="109" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="115" end1="122" start2="115" end2="117" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="131" end1="132" start2="126" end2="128" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="154" end1="155" start2="150" end2="151" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="161" end1="165" start2="157" end2="158" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="166" end1="167" start2="159" end2="160" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java">
       <ranges>
-        <range start1="4" end1="8" start2="4" end2="5" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
-        <range start1="26" end1="26" start2="23" end2="27" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
-        <range start1="29" end1="31" start2="30" end2="34" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
-        <range start1="55" end1="55" start2="58" end2="76" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
-        <range start1="57" end1="77" start2="78" end2="87" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
-        <range start1="78" end1="79" start2="88" end2="89" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
-        <range start1="82" end1="83" start2="92" end2="93" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
-        <range start1="84" end1="85" start2="94" end2="95" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
+        <range start1="27" end1="27" start2="27" end2="35" changelist="12e6a889-15f0-48c4-bf27-3852f996b2b5" />
+        <range start1="57" end1="76" start2="65" end2="65" changelist="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" />
       </ranges>
     </file>
   </component>
@@ -115,7 +166,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -222,7 +273,7 @@
       <workItem from="1703411776164" duration="1838000" />
       <workItem from="1706096708607" duration="137000" />
       <workItem from="1706096981961" duration="11777000" />
-      <workItem from="1706200409952" duration="415000" />
+      <workItem from="1706200409952" duration="8996000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -357,147 +408,102 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>178</line>
+          <line>171</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>179</line>
+          <line>172</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>181</line>
+          <line>174</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>170</line>
+          <line>163</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>171</line>
+          <line>164</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java</url>
-          <line>173</line>
+          <line>166</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>29</line>
+          <line>27</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>30</line>
+          <line>28</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>55</line>
+          <line>53</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>57</line>
+          <line>55</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>58</line>
+          <line>56</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/LoginController.java</url>
-          <line>59</line>
+          <line>57</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>33</line>
+          <line>43</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>34</line>
+          <line>44</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>35</line>
+          <line>45</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>37</line>
+          <line>47</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>36</line>
+          <line>46</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>40</line>
+          <line>50</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>80</line>
+          <line>69</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>78</line>
+          <line>67</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>

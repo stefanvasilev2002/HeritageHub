@@ -25,6 +25,14 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
                 "admin",
                 "admin",
                 RoleUser.ROLE_ADMIN);
+        create("user",
+                "user",
+                "user",
+                RoleUser.ROLE_USER);
+        create("user1",
+                "user1",
+                "user1",
+                RoleUser.ROLE_USER);
     }
     @Override
     public AppUser create(String username, String email, String password, RoleUser role) {
@@ -55,25 +63,6 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
     public List<AppUser> listAll() {
         return appUserRepository.findAll();
     }
-
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        AppUser appUserUsername=appUserRepository.findByUsername(username).orElse(null);
-//        AppUser appUserEmail=appUserRepository.findByEmail(username).orElse(null);
-//        if(appUserEmail!=null) {
-//            return new User(appUserEmail.getEmail(),
-//                    appUserEmail.getPassword(),
-//                    Collections.singleton(appUserEmail.getRole()));
-//        }
-//        else if(appUserUsername!=null){
-//            return new User(appUserUsername.getUsername(),
-//                    appUserUsername.getPassword(),
-//                    Collections.singleton(appUserUsername.getRole()));
-//        }
-//        else {
-//            throw new InvalidAppUserEmailException();
-//        }
-//    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = appUserRepository.findByUsername(username).orElseThrow(InvalidAppUserUsernameException::new);

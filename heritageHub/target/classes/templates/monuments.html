@@ -90,9 +90,12 @@
                     <p class="card-text" th:text="${bodyLatitude + ' ' + monument.latitude}">Latitude: <span th:text="${monument.latitude}"></span></p>
                     <p class="card-text" th:text="${bodyLongitude + ' ' + monument.longitude}">Longitude: <span th:text="${monument.longitude}"></span></p>
                     <p class="card-text" th:text="${bodyCity + ' ' + monument.city}">City: <span th:text="${monument.city}"></span></p>
-                    <p class="card-text" th:text="${bodyRating + ' ' + monument.rating} + ' (' + ${monument.numRatings} + ')'">Rating: <span th:text="${monument.rating} + ' (' + ${monument.numRatings} + ')'"></span></p>
+                    <p class="card-text" th:text="${bodyRating + ' ' + monument.getCalculatedRating()} + ' (' + ${monument.numRatings} + ')'">Rating: <span th:text="${monument.getCalculatedRating()} + ' (' + ${monument.numRatings} + ')'"></span></p>
                     <div class="d-flex justify-content-between align-items-center">
                         <a class="btn btn-primary" th:href="@{/monument/{id}(id=${monument.id})}" th:text="${bodyView}">View</a>
+                        <form th:method="POST" th:action="@{'/deleteMonument/{id}' (id=${monument.id})}" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <button class="btn btn-danger" type="submit" th:text="${bodyDelete}">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>

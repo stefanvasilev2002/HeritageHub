@@ -17,7 +17,7 @@ public class Monument {
     private boolean historic;
     private boolean cultural;
     private String city;
-    private double rating = 0;
+    private Double rating = 0.0;
     private int numRatings = 0;
     public Monument() {
         // no-argument constructor for JPA
@@ -53,6 +53,12 @@ public class Monument {
         this.city = city;
         this.rating = rating;
         this.numRatings = numRatings;
+    }
+    public double getCalculatedRating(){
+        if(numRatings == 0){
+            return 0;
+        }
+        return rating / numRatings;
     }
 }
 

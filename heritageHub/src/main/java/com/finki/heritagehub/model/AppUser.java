@@ -13,8 +13,6 @@ public class AppUser {
 
     private String email;
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Monument> ratedMonuments;
     @Enumerated(EnumType.STRING)
     private RoleUser role;
     public AppUser(){}
