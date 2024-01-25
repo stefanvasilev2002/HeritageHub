@@ -106,7 +106,6 @@
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
             <button class="btn btn-primary" th:text="${backButton}" onclick="goBack()">Back</button>
-            <!-- Button to go to /login/{id} -->
             <a th:href="@{/edit/{id}(id=${monument.id})}" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">Edit Monument</a>
         </div>
     </div>
