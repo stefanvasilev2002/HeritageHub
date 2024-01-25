@@ -161,32 +161,20 @@ public class MonumentController {
         return "redirect:/";
     }
     @PostMapping("/mk")
-    String changeLanguageMacedonian(@RequestParam String pathInfo, HttpServletRequest request, Model model){
+    String changeLanguageMacedonian(HttpServletRequest request, Model model){
         request.setAttribute("lang", "mk");
+        String pathInfo = request.getPathInfo();
 
-        if(pathInfo.startsWith("/edit")){
-            languageService.changeEditMonument(model, request);
-        }
-        if(pathInfo.startsWith("/add")){
-            languageService.changeAddMonument(model, request);
-        }
-        if(pathInfo.startsWith("/about-us")){
-            languageService.changeAboutUs(model,request);
-        }
-        if(pathInfo.startsWith("/category")){
-            languageService.changeMonuments(model,request);
-        }
-        if(pathInfo.equals("/")){
-            languageService.changeCategories(model,request);
-        }
-        if(pathInfo.startsWith("/monument")){
-            languageService.changeMonumentDetails(model, request);
-        }
+        languageService.changeLanguage(model,request);
+
         return "redirect:/" + pathInfo;
     }
     @PostMapping("/en")
-    String changeLanguageEnglish(@RequestParam String pathInfo, HttpServletRequest request, Model model){
+    String changeLanguageEnglish(HttpServletRequest request, Model model){
         request.setAttribute("lang", "en");
+        String pathInfo = request.getPathInfo();
+
+        languageService.changeLanguage(model,request);
 
 
         return "redirect:/" + pathInfo;

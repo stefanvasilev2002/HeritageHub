@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Login</title>
+    <title th:text="${title}">Admin Login</title>
     <link rel="stylesheet" href="/main.css">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-md">
     <div class="container-xl">
         <a href="/" class="navbar-brand">
-            <span class="fw-bold text-secondary">HeritageHub</span>
+            <span class="fw-bold text-secondary" th:text="${navHeader}">HeritageHub</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
             <ul class="navbar-nav nav-tabs mr-auto ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/" th:text="${navHome}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/category/historical}">Historical</a>
+                    <a class="nav-link" th:href="@{/category/historical}" th:text="${navHistorical}">Historical</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/category/cultural}">Cultural</a>
+                    <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
                 </li>
                 <li class="nav-item">
                     <span style="font-size: smaller;">
@@ -35,12 +35,12 @@
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
                 <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
-                    <a class="nav-link" href="/about-us">Contact</a>
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
                 </li>
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
-        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton">About us</a>
+        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton" th:text="${navAboutUs}">About us</a>
     </div>
 </nav>
 
