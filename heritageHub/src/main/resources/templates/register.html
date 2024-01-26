@@ -54,7 +54,7 @@
 </nav>
 
 <!-- Error message displayed conditionally -->
-<div th:if="${hasError}" class="alert alert-danger" role="alert">
+<div th:if="${hasError}" class="alert alert-danger d-flex align-items-center justify-content-center" role="alert">
     <span th:text="${error}"></span>
 </div>
 <form method="post" th:action="@{'/register'}" class="container mt-4">
@@ -82,7 +82,7 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
-            <button class="btn btn-primary" th:text="${backButton}" onclick="goBack()">Back</button>
+            <a class="btn btn-primary" th:text="${backButton}" href="/back">Back</a>
         </div>
     </div>
 </div>

@@ -10,8 +10,8 @@ public interface MonumentRepository extends JpaRepository<Monument, Long> {
     List<Monument> findAllByOrderById();
     List<Monument> findAllByHistoricIsTrueOrderById();
     List<Monument> findAllByCulturalIsTrueOrderById();
-    List<Monument> findAllByCityContainingAndNameContaining(String city, String name);
-    List<Monument> findAllByNameContaining(String name);
-    List<Monument> findAllByCityContaining(String city);
+    List<Monument> findAllByCityContainingIgnoreCaseAndNameContainingIgnoreCase(String city, String name);
+    List<Monument> findAllByNameContainingIgnoreCase(String name);
+    List<Monument> findAllByCityContainingIgnoreCase(String city);
 
 }

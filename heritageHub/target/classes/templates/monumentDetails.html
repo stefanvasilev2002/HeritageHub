@@ -53,13 +53,13 @@
                     </div>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
-                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
+                <li class="nav-item d-md-none mx-2" id="contactNavItem" style="display: none;">
                     <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
                 </li>
-                <li class="nav-item d-md-none">
+                <li class="nav-item d-md-none mx-2">
                     <a href="/login" class="btn btn-secondary" th:text="${navLogIn}" sec:authorize="!isAuthenticated()">Log In</a>
                 </li>
-                <li class="nav-item d-md-none">
+                <li class="nav-item d-md-none mx-2">
                     <a href="/logout" class="btn btn-secondary" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
                 </li>
             </ul>
@@ -105,7 +105,7 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
-            <button class="btn btn-primary" th:text="${backButton}" onclick="goBack()">Back</button>
+            <a class="btn btn-primary" th:text="${backButton}" href="/back">Back</a>
             <a th:href="@{/edit/{id}(id=${monument.id})}" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">Edit Monument</a>
         </div>
     </div>
@@ -134,9 +134,6 @@
     }
 </script>
 <script>
-    function goBack() {
-        window.history.back();
-    }
     function validateNumericInput(input) {
         // Enforce the range within JavaScript
         if (input.value < 0) {

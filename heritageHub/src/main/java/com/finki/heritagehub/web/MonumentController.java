@@ -1,9 +1,11 @@
 package com.finki.heritagehub.web;
 
 import com.finki.heritagehub.model.Monument;
+import com.finki.heritagehub.service.Command;
 import com.finki.heritagehub.service.LanguageSelectionStrategy;
 import com.finki.heritagehub.service.LanguageStrategyFactory;
 import com.finki.heritagehub.service.MonumentService;
+import com.finki.heritagehub.service.impl.BackCommandImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +20,17 @@ import java.util.List;
 public class MonumentController {
     private final MonumentService monumentService;
     private final LanguageStrategyFactory languageStrategyFactory;
+    private final BackCommandImpl backCommand;
 
-    public MonumentController(MonumentService monumentService, LanguageStrategyFactory languageService) {
+    public MonumentController(MonumentService monumentService, LanguageStrategyFactory languageService, BackCommandImpl backCommand) {
         this.monumentService = monumentService;
         this.languageStrategyFactory = languageService;
+        this.backCommand = backCommand;
     }
 
     @GetMapping("/")
     public String showCategories(Model model, HttpServletRequest request) {
+        backCommand.updateNavigationHistory(request);
         request.getSession().setAttribute("pathInfo", request.getRequestURI());
         LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
         strategy.changeCategories(model, request);
@@ -43,6 +48,7 @@ public class MonumentController {
     public String showMonumentsByCategory(@PathVariable String category,
                                           Model model,
                                           HttpServletRequest request) {
+        backCommand.updateNavigationHistory(request);
         request.getSession().setAttribute("pathInfo", request.getRequestURI());
         LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
         strategy.changeMonuments(model, request);
@@ -53,12 +59,13 @@ public class MonumentController {
 
         return "monuments";
     }
-    @GetMapping("/category/search")
+    @GetMapping("/category/{category}/search")
     public String search(@RequestParam(required = false) String searchQueryName,
                          @RequestParam(required = false) String searchQueryCity,
-                         @RequestParam String category,
+                         @PathVariable String category,
                          Model model,
                          HttpServletRequest request) {
+        backCommand.updateNavigationHistory(request);
         request.getSession().setAttribute("pathInfo", request.getRequestURI());
         LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
         strategy.changeMonuments(model, request);
@@ -72,6 +79,7 @@ public class MonumentController {
     public String showMonumentDetails(@PathVariable Long id,
                                       Model model,
                                       HttpServletRequest request) {
+        backCommand.updateNavigationHistory(request);
         request.getSession().setAttribute("pathInfo", request.getRequestURI());
         LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
         strategy.changeMonumentDetails(model, request);
@@ -82,6 +90,7 @@ public class MonumentController {
     @GetMapping("/about-us")
     public String showAboutUs(Model model,
                               HttpServletRequest request){
+        backCommand.updateNavigationHistory(request);
         request.getSession().setAttribute("pathInfo", request.getRequestURI());
         LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
         strategy.changeAboutUs(model, request);
@@ -91,6 +100,7 @@ public class MonumentController {
     @GetMapping("/add")
     public String showAddForm(Model model,
                               HttpServletRequest request){
+        backCommand.updateNavigationHistory(request);
         request.getSession().setAttribute("pathInfo", request.getRequestURI());
         LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
         strategy.changeAddMonument(model, request);
@@ -170,5 +180,11 @@ public class MonumentController {
         String pathInfo = (String) request.getSession().getAttribute("pathInfo");
 
         return "redirect:" + pathInfo;
+    }
+    @GetMapping("/back")
+    public String goBack(HttpServletRequest request) {
+        backCommand.execute(request);
+        String backUrl = (String) request.getAttribute("backUrl");
+        return "redirect:" + (backUrl != null ? backUrl : "/");
     }
 }

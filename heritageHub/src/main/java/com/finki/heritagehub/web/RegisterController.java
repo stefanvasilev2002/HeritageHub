@@ -6,6 +6,7 @@ import com.finki.heritagehub.model.exceptions.InvalidAppUserUsernameException;
 import com.finki.heritagehub.service.AppUserService;
 import com.finki.heritagehub.service.LanguageSelectionStrategy;
 import com.finki.heritagehub.service.LanguageStrategyFactory;
+import com.finki.heritagehub.service.impl.BackCommandImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +21,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RegisterController {
     private final AppUserService appUserService;
     private final LanguageStrategyFactory languageStrategyFactory;
-    public RegisterController(AppUserService appUserService, LanguageStrategyFactory languageStrategyFactory) {
+    private final BackCommandImpl backCommand;
+
+    public RegisterController(AppUserService appUserService, LanguageStrategyFactory languageStrategyFactory, BackCommandImpl backCommand) {
         this.appUserService = appUserService;
         this.languageStrategyFactory = languageStrategyFactory;
+        this.backCommand = backCommand;
     }
 
 
     @GetMapping
     public String showRegister(Model model,
                                HttpServletRequest request) {
+        backCommand.updateNavigationHistory(request);
         request.getSession().setAttribute("pathInfo", request.getRequestURI());
         LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
         strategy.changeRegister(model, request);
@@ -38,14 +43,18 @@ public class RegisterController {
     public String registerUser(@RequestParam String username,
                                @RequestParam String password,
                                @RequestParam String email,
-                               Model model){
+                               Model model,
+                               HttpServletRequest request){
 
 
         try{
             appUserService.create(username,email,password,RoleUser.ROLE_USER);
-        }catch (InvalidAppUserEmailException | InvalidAppUserUsernameException e){
+        } catch (Exception e) {
             model.addAttribute("hasError", true);
-            model.addAttribute("error", e.getMessage());
+            model.addAttribute("error", "Username or email already exists.");
+            request.getSession().setAttribute("pathInfo", request.getRequestURI());
+            LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
+            strategy.changeRegister(model, request);
             return "register";
         }
 

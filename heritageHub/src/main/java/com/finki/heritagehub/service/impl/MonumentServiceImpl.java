@@ -31,7 +31,7 @@ public class MonumentServiceImpl implements MonumentService {
         this.ratingService = ratingService;
         this.appUserService = appUserService;
 
-        //loadMonuments();
+        loadMonuments();
     }
     @Override
     public List<Monument> getAllMonumentsByCategory(String category) {
@@ -114,13 +114,13 @@ public class MonumentServiceImpl implements MonumentService {
     public List<Monument> filterMonuments(String searchQueryCity, String searchQueryName, String category) {
         List<Monument> monuments;
         if (searchQueryCity != null && searchQueryName != null){
-            monuments =  monumentRepository.findAllByCityContainingAndNameContaining(searchQueryCity, searchQueryName);
+            monuments =  monumentRepository.findAllByCityContainingIgnoreCaseAndNameContainingIgnoreCase(searchQueryCity, searchQueryName);
         }
         else if (searchQueryCity != null){
-            monuments = monumentRepository.findAllByCityContaining(searchQueryCity);
+            monuments = monumentRepository.findAllByCityContainingIgnoreCase(searchQueryCity);
         }
         else if (searchQueryName != null){
-            monuments = monumentRepository.findAllByNameContaining(searchQueryName);
+            monuments = monumentRepository.findAllByNameContainingIgnoreCase(searchQueryName);
         }
         else monuments = monumentRepository.findAll();
 

@@ -39,6 +39,7 @@ public class WebSecurityConfig {
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
+                        .failureUrl("/login?error=BadCredentials")
                         .defaultSuccessUrl("/", true)
                 )
                 .logout((logout) -> logout
@@ -48,6 +49,7 @@ public class WebSecurityConfig {
                         .deleteCookies("JSESSIONID")
                         .logoutSuccessUrl("/login")
                 );
+
 
         return http.build();
     }

@@ -41,10 +41,10 @@
                     </div>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
-                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
+                <li class="nav-item d-md-none mx-2" id="contactNavItem" style="display: none;">
                     <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
                 </li>
-                <li class="nav-item d-md-none">
+                <li class="nav-item d-md-none mx-2">
                     <a href="/logout" class="btn btn-secondary" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
                 </li>
             </ul>
@@ -57,8 +57,8 @@
 </nav>
 
 <!-- Error message displayed conditionally -->
-<div th:if="${hasError}" class="alert alert-danger" role="alert">
-    <span th:text="${error}"></span>
+<div th:if="${param.error}" class="alert alert-danger d-flex align-items-center justify-content-center" role="alert">
+    <span >Invalid username and password.</span>
 </div>
 <form method="post" action="/login" class="container mt-4">
 
@@ -82,14 +82,11 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
-            <button class="btn btn-primary" th:text="${backButton}" onclick="goBack()" >Back</button>
+            <a class="btn btn-primary" th:text="${backButton}" href="/back">Back</a>
         </div>
     </div>
 </div>
 <script>
-    function goBack() {
-        window.history.back();
-    }
 </script>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/visibilityToggle.js"></script>
