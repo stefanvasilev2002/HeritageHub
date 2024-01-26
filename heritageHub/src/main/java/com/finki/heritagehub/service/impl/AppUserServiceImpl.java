@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Service
 public class AppUserServiceImpl implements AppUserService, UserDetailsService {
@@ -34,7 +36,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
                 RoleUser.ROLE_USER);*/
     }
     @Override
-    public AppUser create(String username, String email, String password, RoleUser role) {
+    public AppUser create(String username, String email, String password, RoleUser role, String token) {
         if(!(appUserRepository.findByUsername(username).isEmpty() && appUserRepository.findByEmail(email).isEmpty())){
             throw new UserAlreadyExistsException();
         }
@@ -42,7 +44,8 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
                 username,
                 email,
                 passwordEncoder.encode(password),
-                role));
+                role,
+                token));
     }
 
     @Override
@@ -79,5 +82,19 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
 
         return appUserRepository.findByUsernameAndPassword(username, passwordEncoder.encode(password))
                 .orElseThrow(InvalidUserCredentialsException::new);
+    }
+    @Override
+    public boolean confirmRegistration(String token) {
+        AppUser appUser = appUserRepository.findByConfirmationToken(token);
+        if (appUser != null && !appUser.isRegistered() && isValidTokenExpiration(appUser.getConfirmationTokenExpiration())) {
+            appUser.setRegistered(true);
+            appUserRepository.save(appUser);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isValidTokenExpiration(LocalDate expirationDate) {
+        return expirationDate != null && expirationDate.isAfter(LocalDate.now());
     }
 }
