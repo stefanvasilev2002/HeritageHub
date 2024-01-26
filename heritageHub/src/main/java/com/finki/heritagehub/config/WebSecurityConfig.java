@@ -32,7 +32,7 @@ public class WebSecurityConfig {
                         .hasRole("ADMIN")
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/add"),
                                 AntPathRequestMatcher.antMatcher("/addRating"))
-                        .hasRole("USER")
+                        .hasRole("CONFIRMED")
                         .anyRequest()
                         .permitAll()
                 )

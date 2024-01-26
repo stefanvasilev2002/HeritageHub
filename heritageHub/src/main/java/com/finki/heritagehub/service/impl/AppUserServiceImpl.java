@@ -88,6 +88,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
         AppUser appUser = appUserRepository.findByConfirmationToken(token);
         if (appUser != null && !appUser.isRegistered() && isValidTokenExpiration(appUser.getConfirmationTokenExpiration())) {
             appUser.setRegistered(true);
+            appUser.setRole(RoleUser.ROLE_CONFIRMED);
             appUserRepository.save(appUser);
             return true;
         }

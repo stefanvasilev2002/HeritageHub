@@ -58,7 +58,7 @@ public class RegisterController {
 
             // TODO: CHANGE URL AFTER HOST
             restTemplate
-                    .postForEntity("http://localhost:8080/confirmation/send-confirmation", confirmationRequest, String.class);
+                    .postForEntity("http://localhost:9090/confirmation/send-confirmation", confirmationRequest, String.class);
 
 
         } catch (Exception e) {

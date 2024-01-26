@@ -102,7 +102,7 @@
 </div>
 
 <div class="text-center mt-4">
-    <a href="/add" class="btn btn-primary btn-lg" th:text="${bodyAddMonument}" sec:authorize="hasRole('ROLE_USER')">Add Monument</a>
+    <a href="/add" class="btn btn-primary btn-lg" th:text="${bodyAddMonument}" sec:authorize="hasRole('ROLE_CONFIRMED')">Add Monument</a>
 </div>
 
 
