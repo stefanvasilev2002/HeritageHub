@@ -1,4 +1,4 @@
-package com.finki.emailmicrservice.model;
+package com.finki.emailmicroservice.model;
 
 import lombok.Data;
 

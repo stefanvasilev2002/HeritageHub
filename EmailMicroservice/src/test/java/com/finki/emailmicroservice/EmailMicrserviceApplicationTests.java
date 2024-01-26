@@ -1,4 +1,4 @@
-package com.finki.emailmicrservice;
+package com.finki.emailmicroservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
