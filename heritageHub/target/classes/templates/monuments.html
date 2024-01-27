@@ -47,12 +47,9 @@
                     </div>
                 </li>
                 <!-- Hidden "Contact" item for smaller screens -->
-                <div>
-                    <li class="nav-item d-md-none mx-5" id="contactNavItem" style="display: none;">
-                        <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
-                    </li>
-                </div>
-
+                <li class="nav-item d-md-none mx-5" id="contactNavItem" style="display: none;">
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
+                </li>
                 <li class="nav-item d-md-none mx-5">
                     <a href="/login" class="btn btn-secondary" th:text="${navLogIn}" sec:authorize="!isAuthenticated()">Log In</a>
                 </li>

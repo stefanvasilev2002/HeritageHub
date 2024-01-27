@@ -22,7 +22,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
     public AppUserServiceImpl(AppUserRepository appUserRepository,PasswordEncoder passwordEncoder){
         this.appUserRepository=appUserRepository;
         this.passwordEncoder=passwordEncoder;
-        /*create("admin",
+        create("admin",
                 "admin",
                 "admin",
                 RoleUser.ROLE_ADMIN,"");
@@ -33,7 +33,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
         create("user1",
                 "user1",
                 "user1",
-                RoleUser.ROLE_USER,"");*/
+                RoleUser.ROLE_USER,"");
     }
     @Override
     public AppUser create(String username, String email, String password, RoleUser role, String token) {
