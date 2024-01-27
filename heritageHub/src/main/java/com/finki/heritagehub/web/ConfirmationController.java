@@ -19,9 +19,8 @@ public class ConfirmationController {
 
     @GetMapping("/confirm")
     public ResponseEntity<String> confirmRegistration(@RequestParam("token") String token) {
-        // Validate the token and register the user
         if (appUserService.confirmRegistration(token)) {
-            return ResponseEntity.ok("User registration confirmed successfully.");
+            return ResponseEntity.ok("User registration confirmed successfully. Return to the app.");
         } else {
             return ResponseEntity.badRequest().body("Invalid or expired token.");
         }
