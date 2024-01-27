@@ -22,7 +22,6 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
     public AppUserServiceImpl(AppUserRepository appUserRepository,PasswordEncoder passwordEncoder){
         this.appUserRepository=appUserRepository;
         this.passwordEncoder=passwordEncoder;
-        appUserRepository.deleteAll();
         create("admin",
                 "admin",
                 "admin",
@@ -87,6 +86,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
     @Override
     public boolean confirmRegistration(String token) {
         AppUser appUser = appUserRepository.findByConfirmationToken(token);
+        List<AppUser> appUsers = listAll();
         if (appUser != null && !appUser.isRegistered() && isValidTokenExpiration(appUser.getConfirmationTokenExpiration())) {
             appUser.setRegistered(true);
             appUser.setRole(RoleUser.ROLE_CONFIRMED);

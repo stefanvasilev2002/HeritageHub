@@ -56,9 +56,13 @@ public class RegisterController {
             ConfirmationRequest confirmationRequest = new ConfirmationRequest(email,
                     ConfirmationTokenGenerator.BASE_URL + token);
 
+            /*restTemplate
+                    .postForEntity("http://localhost:9090/confirmation/send-confirmation",
+                            confirmationRequest, String.class);*/
             restTemplate
                     .postForEntity("https://mail-microservice-116ef2400221.herokuapp.com/confirmation/send-confirmation",
                             confirmationRequest, String.class);
+
 
 
         } catch (Exception e) {
