@@ -22,7 +22,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
     public AppUserServiceImpl(AppUserRepository appUserRepository,PasswordEncoder passwordEncoder){
         this.appUserRepository=appUserRepository;
         this.passwordEncoder=passwordEncoder;
-
+        appUserRepository.deleteAll();
     }
     @Override
     public AppUser create(String username, String email, String password, RoleUser role, String token) {

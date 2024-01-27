@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Microservice url added, deployment for testing email confirmation">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Redirect link on confirmation change">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/monumentDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/monumentDetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/monuments.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/monuments.html" afterDir="false" />
     </list>
     <list id="19b7b6a5-ac24-4d11-b8d1-de08b1c20f9f" name="Changes by Aleksandar" comment="" />
     <list id="12e6a889-15f0-48c4-bf27-3852f996b2b5" name="Changes by andre" comment="" />
@@ -169,7 +163,7 @@
       <workItem from="1706216189650" duration="13405000" />
       <workItem from="1706265951127" duration="5980000" />
       <workItem from="1706283056377" duration="3661000" />
-      <workItem from="1706346605174" duration="8847000" />
+      <workItem from="1706346605174" duration="9222000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -339,7 +333,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706358874363</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Deployment prep">
+      <option name="closed" value="true" />
+      <created>1706359867230</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1706359867230</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Redirect link on confirmation change">
+      <option name="closed" value="true" />
+      <created>1706360218950</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1706360218950</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +393,9 @@
     <MESSAGE value="Delete monument bug fix" />
     <MESSAGE value="Postgre credentials update" />
     <MESSAGE value="Microservice url added, deployment for testing email confirmation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Microservice url added, deployment for testing email confirmation" />
+    <MESSAGE value="Deployment prep" />
+    <MESSAGE value="Redirect link on confirmation change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redirect link on confirmation change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
