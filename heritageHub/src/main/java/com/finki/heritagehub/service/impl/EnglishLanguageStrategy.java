@@ -16,6 +16,7 @@ public class EnglishLanguageStrategy implements LanguageSelectionStrategy {
         model.addAttribute("navAboutUs", "About us");
         model.addAttribute("navLogIn", "Log In");
         model.addAttribute("navLogOut", "Log Out");
+        model.addAttribute("navTooltip", "Email not confirmed");
     }
     @Override
     public void changeMonuments(Model model, HttpServletRequest request) {
@@ -114,5 +115,15 @@ public class EnglishLanguageStrategy implements LanguageSelectionStrategy {
     public void changeRegister(Model model, HttpServletRequest request) {
         changeLogin(model, request);
         model.addAttribute("bodyEmail", "E-mail:");
+    }
+
+    @Override
+    public void changeRegisterConfirmation(Model model, HttpServletRequest request) {
+        setNavEnglish(model);
+        model.addAttribute("title", "Register Confirmation");
+        model.addAttribute("bodyRegistrationSuccessful","Registration Successful");
+        model.addAttribute("bodyRegisterMessage", "To unlock all user features, please confirm your email.");
+        model.addAttribute("bodyLogIn", "Log In");
+        model.addAttribute("bodyContinueAsGuest", "Continue as guest");
     }
 }

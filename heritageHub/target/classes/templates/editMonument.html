@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${title}">Edit Monument</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="/main.css">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -27,9 +28,14 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/category/cultural}" th:text="${navCultural}">Cultural</a>
                 </li>
+
+                <!-- Hidden "Contact" item for smaller screens -->
+                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
+                </li>
                 <li class="nav-item">
-                    <div class="container mt-2">
-                        <div class="row justify-content-end">
+                    <div class="container mt-2 no-margin">
+                        <div class="row justify-content-start">
                             <div class="col-auto">
                                 <div class="d-flex align-items-center">
                                     <a href="/mk" class="btn btn-sm btn-danger me-2">MK</a>
@@ -40,19 +46,21 @@
                         </div>
                     </div>
                 </li>
-                <!-- Hidden "Contact" item for smaller screens -->
-                <li class="nav-item d-md-none mx-2" id="contactNavItem" style="display: none;">
-                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
+                <li class="nav-item d-md-none" sec:authorize="!isAuthenticated()">
+                    <a href="/login" class="btn btn-secondary mt-2" th:text="${navLogIn}" >Log In</a>
                 </li>
-                <li class="nav-item d-md-none mx-2">
-                    <a href="/logout" class="btn btn-secondary" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
+                <li class="nav-item d-md-none" sec:authorize="isAuthenticated()">
+                    <a href="/logout" class="btn btn-secondary mt-2" th:text="${navLogOut}" >Log Out</a>
                 </li>
             </ul>
         </div>
         <!-- "Contact" button for larger screens -->
-        <a href="/about-us" class="btn btn-secondary d-none d-md-block" id="contactButton" th:text="${navAboutUs}">About us</a>
-        <a href="/login" class="btn btn-secondary d-none d-md-block" id="loginButton" th:text="${navLogIn}" sec:authorize="!isAuthenticated()">Log In</a>
-        <a href="/logout" class="btn btn-secondary d-none d-md-block" id="logoutButton" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
+        <button sec:authorize="hasRole('ROLE_USER')" type="button" class="btn" data-toggle="tooltip" data-placement="bottom" th:title="${navTooltip}">
+            <i class="bi bi-exclamation-circle-fill text-danger"></i>
+        </button>
+        <a href="/about-us" class="btn btn-primary d-none d-md-block" id="contactButton" th:text="${navAboutUs}" style="margin-right: 0.7em;">About us</a>
+        <a href="/login" class="btn btn-secondary ml-2 d-none d-md-block" id="loginButton" th:text="${navLogIn}" sec:authorize="!isAuthenticated()">Log In</a>
+        <a href="/logout" class="btn btn-secondary ml-2 d-none d-md-block" id="logoutButton" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
     </div>
 </nav>
 <div class="container mt-5">

@@ -16,6 +16,7 @@ public class MacedonianLanguageStrategy implements LanguageSelectionStrategy {
         model.addAttribute("navAboutUs", "За нас");
         model.addAttribute("navLogIn", "Логирај се");
         model.addAttribute("navLogOut", "Одјава");
+        model.addAttribute("navTooltip", "Емаил не е потврден");
     }
     @Override
     public void changeMonuments(Model model, HttpServletRequest request) {
@@ -114,6 +115,16 @@ public class MacedonianLanguageStrategy implements LanguageSelectionStrategy {
     public void changeRegister(Model model, HttpServletRequest request) {
         changeLogin(model, request);
         model.addAttribute("bodyEmail", "Е-маил:");
+    }
+
+    @Override
+    public void changeRegisterConfirmation(Model model, HttpServletRequest request) {
+        setNavMacedonian(model);
+        model.addAttribute("title", "Успешна Регистрација");
+        model.addAttribute("bodyRegistrationSuccessful","Успешна Регистрација");
+        model.addAttribute("bodyRegisterMessage", "За да ги отклучите сите кориснички функционалности, потвредете го вашиот емаил.");
+        model.addAttribute("bodyLogIn", "Логирајте се");
+        model.addAttribute("bodyContinueAsGuest", "Продолжете како гостин");
     }
 }
 

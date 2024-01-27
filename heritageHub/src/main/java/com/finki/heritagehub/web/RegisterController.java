@@ -58,7 +58,7 @@ public class RegisterController {
 
             /*restTemplate
                     .postForEntity("http://localhost:9090/confirmation/send-confirmation",
-                            confirmationRequest, String.class);*/
+                            confirmationRequest, String.class); */
             restTemplate
                     .postForEntity("https://mail-microservice-116ef2400221.herokuapp.com/confirmation/send-confirmation",
                             confirmationRequest, String.class);
@@ -74,6 +74,14 @@ public class RegisterController {
             return "register";
         }
 
-        return "redirect:/";
+        return "redirect:/register/confirmation";
+    }
+    @GetMapping("/confirmation")
+    public String showRegisterConfirmation(Model model,
+                                           HttpServletRequest request){
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+        LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
+        strategy.changeRegisterConfirmation(model, request);
+        return "registerConfirmation";
     }
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${title}">Create Monument</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <title th:text="${title}">Register Confirmation</title>
     <link rel="stylesheet" href="/main.css">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
@@ -62,55 +62,23 @@
         <a href="/logout" class="btn btn-secondary ml-2 d-none d-md-block" id="logoutButton" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
     </div>
 </nav>
-<div class="container mt-5">
+
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1 class="text-center" th:text="${bodyHeader}">Create Monument</h1>
-            <div class="card">
-                <div class="card-body">
-                    <form method="post" action="/add">
-                        <div class="mb-3">
-                            <label for="latitude" class="form-label" th:text="${bodyLatitude}">Latitude:</label>
-                            <input type="number" step="any" id="latitude" name="latitude" required class="form-control">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="longitude" class="form-label" th:text="${bodyLongitude}">Longitude:</label>
-                            <input type="number" step="any" id="longitude" name="longitude" required class="form-control">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="name" class="form-label" th:text="${bodyName}">Name:</label>
-                            <input type="text" id="name" name="name" required class="form-control">
-                        </div>
-
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" id="historic" name="historic" class="form-check-input">
-                            <label for="historic" class="form-check-label" th:text="${bodyHistoric}">Historic</label>
-                        </div>
-
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" id="cultural" name="cultural" class="form-check-input">
-                            <label for="cultural" class="form-check-label" th:text="${bodyCultural}">Cultural</label>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="city" class="form-label" th:text="${bodyCity}">City:</label>
-                            <input type="text" id="city" name="city" required class="form-control">
-                        </div>
-
-                        <input type="submit" value="Add Monument" class="btn btn-primary">
-                    </form>
-                </div>
+            <div class="alert alert-success text-center" role="alert">
+                <span th:text="${bodyRegistrationSuccessful}">Registration Successful</span>
+                <br>
+                <span class="fw-bold text-danger" th:text="${bodyRegisterMessage}">Welcome! To unlock all the amazing features, please check your email and confirm your registration.</span>
             </div>
         </div>
     </div>
 </div>
-
-<div class="container mt-3">
+<div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-sm-6 text-center">
-            <a class="btn btn-primary" th:text="${backButton}" href="/back">Back</a>
+        <div class="col-md-6">
+            <a href="/login" class="btn btn-primary btn-block" th:text="${bodyLogIn}">Log In</a>
+            <a href="/" class="btn btn-secondary btn-block" th:text="${bodyContinueAsGuest}">Continue as guest</a>
         </div>
     </div>
 </div>

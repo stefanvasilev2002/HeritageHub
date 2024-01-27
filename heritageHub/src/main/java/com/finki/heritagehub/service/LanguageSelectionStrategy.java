@@ -12,5 +12,6 @@ public interface LanguageSelectionStrategy {
     void changeCategories(Model model, HttpServletRequest request);
     void changeMonumentDetails(Model model, HttpServletRequest request);
     void changeRegister(Model model, HttpServletRequest request);
+    void changeRegisterConfirmation(Model model, HttpServletRequest request);
 }
 

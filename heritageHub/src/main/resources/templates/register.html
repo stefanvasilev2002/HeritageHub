@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">User Registration</title>
     <link rel="stylesheet" href="/main.css">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -29,9 +30,14 @@
                     <a class="nav-link" th:href="@{/category/cultural}"
                                         th:text="${navCultural}">Cultural</a>
                 </li>
+
+                <!-- Hidden "Contact" item for smaller screens -->
+                <li class="nav-item d-md-none btn-primary" id="contactNavItem" style="display: none;">
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
+                </li>
                 <li class="nav-item">
                     <div class="container mt-2">
-                        <div class="row justify-content-end">
+                        <div class="row justify-content-start">
                             <div class="col-auto">
                                 <div class="d-flex align-items-center">
                                     <a href="/mk" class="btn btn-sm btn-danger me-2">MK</a>
@@ -41,10 +47,6 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <!-- Hidden "Contact" item for smaller screens -->
-                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
-                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
                 </li>
             </ul>
         </div>
