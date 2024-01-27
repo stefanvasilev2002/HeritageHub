@@ -23,6 +23,18 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
         this.appUserRepository=appUserRepository;
         this.passwordEncoder=passwordEncoder;
         appUserRepository.deleteAll();
+        create("admin",
+                "admin",
+                "admin",
+                RoleUser.ROLE_ADMIN,"");
+        create("user",
+                "user",
+                "user",
+                RoleUser.ROLE_CONFIRMED,"");
+        create("user1",
+                "user1",
+                "user1",
+                RoleUser.ROLE_USER,"");
     }
     @Override
     public AppUser create(String username, String email, String password, RoleUser role, String token) {

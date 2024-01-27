@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Redirect link on confirmation change">
+    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Reset user database">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" afterDir="false" />
     </list>
     <list id="19b7b6a5-ac24-4d11-b8d1-de08b1c20f9f" name="Changes by Aleksandar" comment="" />
@@ -163,7 +163,7 @@
       <workItem from="1706216189650" duration="13405000" />
       <workItem from="1706265951127" duration="5980000" />
       <workItem from="1706283056377" duration="3661000" />
-      <workItem from="1706346605174" duration="9222000" />
+      <workItem from="1706346605174" duration="9787000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -349,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706360218950</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Reset user database">
+      <option name="closed" value="true" />
+      <created>1706360363919</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1706360363919</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +403,8 @@
     <MESSAGE value="Microservice url added, deployment for testing email confirmation" />
     <MESSAGE value="Deployment prep" />
     <MESSAGE value="Redirect link on confirmation change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Redirect link on confirmation change" />
+    <MESSAGE value="Reset user database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reset user database" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -467,37 +476,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>87</line>
+          <line>88</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>94</line>
+          <line>95</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>92</line>
+          <line>93</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>91</line>
+          <line>92</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>90</line>
+          <line>91</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>89</line>
+          <line>90</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>88</line>
+          <line>89</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
