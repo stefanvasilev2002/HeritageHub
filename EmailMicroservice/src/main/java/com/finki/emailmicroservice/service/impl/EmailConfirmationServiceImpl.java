@@ -23,7 +23,7 @@ public class EmailConfirmationServiceImpl implements EmailConfirmationService {
         String content = "Hello," +
                 "Thank you for registering on our site, HeritageHubMK." +
                 "Please click the following link to confirm your registration: " + confirmationLink +
-                "If you didn't request this, please ignore this email. Your account will not be confirmed.";
+                " . If you didn't request this, please ignore this email. Your account will not be confirmed.";
         mailMessage.setText(content);
         javaMailSender.send(mailMessage);
     }
