@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/confirmation")
 public class ConfirmationController {
     private final EmailConfirmationService emailConfirmationService;
 
@@ -14,7 +13,7 @@ public class ConfirmationController {
         this.emailConfirmationService = emailConfirmationService;
     }
 
-    @PostMapping("/send-confirmation")
+    @PostMapping("/confirmation/send-confirmation")
     public ResponseEntity<String> sendConfirmation(@RequestBody ConfirmationRequest confirmationRequest) {
 
         emailConfirmationService.sendConfirmationEmail(confirmationRequest.getEmail(), confirmationRequest.getConfirmationLink());
