@@ -3,10 +3,7 @@ package com.finki.emailmicroservice.web;
 import com.finki.emailmicroservice.model.ConfirmationRequest;
 import com.finki.emailmicroservice.service.EmailConfirmationService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/confirmation")
@@ -23,5 +20,9 @@ public class ConfirmationController {
         emailConfirmationService.sendConfirmationEmail(confirmationRequest.getEmail(), confirmationRequest.getConfirmationLink());
 
         return ResponseEntity.ok("Confirmation email sent successfully.");
+    }
+    @GetMapping("/")
+    public ResponseEntity<String> home(){
+        return ResponseEntity.ok("Email confirmation microservice");
     }
 }
