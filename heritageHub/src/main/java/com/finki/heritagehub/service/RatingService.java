@@ -10,4 +10,5 @@ public interface RatingService {
     double ratingByUserForMonument(AppUser user, Monument monument);
     Optional<Rating> getRatingByUserAndMonument(AppUser user, Monument monument);
     void save(Rating rating);
+    void deleteAllByMonument(Monument monument);
 }

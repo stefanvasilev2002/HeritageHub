@@ -7,6 +7,7 @@ import com.finki.heritagehub.service.AppUserService;
 import com.finki.heritagehub.service.MonumentFactory;
 import com.finki.heritagehub.service.MonumentService;
 import com.finki.heritagehub.service.RatingService;
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -103,10 +104,12 @@ public class MonumentServiceImpl implements MonumentService {
         monumentRepository.save(monument);
     }
     @Override
+    @Transactional
     public void deleteMonument(Long id) {
+        Monument monument = monumentRepository.findMonumentById(id);
+        ratingService.deleteAllByMonument(monument);
         monumentRepository.deleteById(id);
     }
-
     @Override
     public List<Monument> filterMonuments(String searchQueryCity, String searchQueryName, String category) {
         List<Monument> monuments;

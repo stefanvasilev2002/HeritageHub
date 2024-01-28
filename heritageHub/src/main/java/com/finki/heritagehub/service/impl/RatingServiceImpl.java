@@ -34,4 +34,9 @@ public class RatingServiceImpl implements RatingService {
     public void save(Rating rating) {
         ratingRepository.save(rating);
     }
+
+    @Override
+    public void deleteAllByMonument(Monument monument) {
+        ratingRepository.deleteAllByMonument(monument);
+    }
 }
