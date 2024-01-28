@@ -12,7 +12,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -31,7 +30,7 @@ public class MonumentServiceImpl implements MonumentService {
         this.ratingService = ratingService;
         this.appUserService = appUserService;
 
-        //loadMonuments();
+        loadMonuments();
     }
     @Override
     public List<Monument> getAllMonumentsByCategory(String category) {
@@ -44,8 +43,6 @@ public class MonumentServiceImpl implements MonumentService {
     public Monument getMonumentById(Long id) {
         return monumentRepository.findById(id).orElse(null);
     }
-
-    //    @PostConstruct
     public void loadMonuments() {
         // Load from CSV and save to the database
         List<Monument> monuments = csvLoaderServiceImpl.loadMonumentsFromCsv();

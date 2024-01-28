@@ -63,9 +63,9 @@
             </ul>
         </div>
         <!-- Buttons for larger screens -->
-        <button sec:authorize="hasRole('ROLE_USER')" type="button" class="btn" data-toggle="tooltip" data-placement="bottom" th:title="${navTooltip}">
+        <a href="/resend" sec:authorize="hasRole('ROLE_USER')" class="btn" data-toggle="tooltip" data-placement="bottom" th:title="${navTooltip}">
             <i class="bi bi-exclamation-circle-fill text-danger"></i>
-        </button>
+        </a>
         <a href="/about-us" class="btn btn-primary d-none d-md-block" id="contactButton"
            th:text="${navAboutUs}" style="margin-right: 0.7em;">About us</a>
         <a href="/login" class="btn btn-secondary ml-2 d-none d-md-block" id="loginButton"

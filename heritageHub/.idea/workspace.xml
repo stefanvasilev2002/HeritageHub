@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="Token error fix">
+    <list default="true" id="a43210fa-f9f0-4d7b-8f9d-0442b8220f4c" name="Changes" comment="New deployment prep">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/resend.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/AppUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/AppUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/MonumentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/MonumentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/categories.html" afterDir="false" />
     </list>
     <list id="19b7b6a5-ac24-4d11-b8d1-de08b1c20f9f" name="Changes by Aleksandar" comment="" />
     <list id="12e6a889-15f0-48c4-bf27-3852f996b2b5" name="Changes by andre" comment="" />
@@ -20,9 +28,9 @@
       <list>
         <option value="Dockerfile" />
         <option value="Enum" />
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -165,6 +173,9 @@
       <workItem from="1706265951127" duration="5980000" />
       <workItem from="1706283056377" duration="3661000" />
       <workItem from="1706346605174" duration="11799000" />
+      <workItem from="1706386347496" duration="506000" />
+      <workItem from="1706443395885" duration="7363000" />
+      <workItem from="1706454268829" duration="1810000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -374,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706362097883</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="New deployment prep">
+      <option name="closed" value="true" />
+      <created>1706386560382</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1706386560382</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +442,8 @@
     <MESSAGE value="Reset user database" />
     <MESSAGE value="Premade users added" />
     <MESSAGE value="Token error fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Token error fix" />
+    <MESSAGE value="New deployment prep" />
+    <option name="LAST_COMMIT_MESSAGE" value="New deployment prep" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -440,32 +460,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>59</line>
+          <line>60</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>70</line>
+          <line>69</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>71</line>
+          <line>70</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>72</line>
+          <line>71</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/RegisterController.java</url>
-          <line>73</line>
+          <line>72</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -479,59 +494,69 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>95</line>
+          <line>94</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>93</line>
+          <line>92</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>92</line>
+          <line>91</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>91</line>
+          <line>90</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>90</line>
+          <line>89</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="26" />
+          <line>39</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/web/ConfirmationController.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/finki/heritagehub/service/impl/AppUserServiceImpl.java</url>
           <line>88</line>
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

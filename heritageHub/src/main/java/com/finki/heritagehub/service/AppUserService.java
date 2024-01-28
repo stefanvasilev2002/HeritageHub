@@ -12,4 +12,6 @@ public interface AppUserService {
     List<AppUser> listAll();
     AppUser login(String username, String password);
     boolean confirmRegistration(String token);
+
+    void setNewToken(String token, String email);
 }

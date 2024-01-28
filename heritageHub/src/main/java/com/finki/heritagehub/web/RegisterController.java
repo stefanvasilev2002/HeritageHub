@@ -47,12 +47,12 @@ public class RegisterController {
                                @RequestParam String password,
                                @RequestParam String email,
                                Model model,
-                               HttpServletRequest request){
+                               HttpServletRequest request) {
 
         String token = ConfirmationTokenGenerator.generateToken();
 
-        try{
-            appUserService.create(username,email,password,RoleUser.ROLE_USER, token);
+        try {
+            appUserService.create(username, email, password, RoleUser.ROLE_USER, token);
             ConfirmationRequest confirmationRequest = new ConfirmationRequest(email,
                     ConfirmationTokenGenerator.BASE_URL + token);
 
@@ -66,16 +66,25 @@ public class RegisterController {
                             confirmationRequest, String.class);
 
 
-
         } catch (Exception e) {
             model.addAttribute("hasError", true);
             model.addAttribute("error", "Username or email already exists.");
             request.getSession().setAttribute("pathInfo", request.getRequestURI());
             LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
             strategy.changeRegister(model, request);
-            return "register";
+            return "redirect:/register";
         }
 
-        return "redirect:/";
+        return "redirect:/register/registerConfirmation";
+
+    }
+        @GetMapping("/registerConfirmation")
+        public String showRegisterConfirmation(Model model,
+                HttpServletRequest request) {
+            backCommand.updateNavigationHistory(request);
+            request.getSession().setAttribute("pathInfo", request.getRequestURI());
+            LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
+            strategy.changeRegisterConfirmation(model, request);
+            return "registerConfirmation";
     }
 }

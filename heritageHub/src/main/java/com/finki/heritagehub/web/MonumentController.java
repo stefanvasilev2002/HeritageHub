@@ -1,7 +1,6 @@
 package com.finki.heritagehub.web;
 
 import com.finki.heritagehub.model.Monument;
-import com.finki.heritagehub.service.Command;
 import com.finki.heritagehub.service.LanguageSelectionStrategy;
 import com.finki.heritagehub.service.LanguageStrategyFactory;
 import com.finki.heritagehub.service.MonumentService;
@@ -186,5 +185,14 @@ public class MonumentController {
         backCommand.execute(request);
         String backUrl = (String) request.getAttribute("backUrl");
         return "redirect:" + (backUrl != null ? backUrl : "/");
+    }
+    @GetMapping("/resend")
+    public String resend(Model model,
+                              HttpServletRequest request){
+        request.getSession().setAttribute("pathInfo", request.getRequestURI());
+        LanguageSelectionStrategy strategy = languageStrategyFactory.getStrategy(request);
+        strategy.changeLogin(model, request);
+
+        return "resend";
     }
 }
