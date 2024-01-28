@@ -1,0 +1,32 @@
+version: '3'
+services:
+  db:
+    image: "postgres:latest"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: hmniybqzvtmoer
+      POSTGRES_PASSWORD: 9219e526be9f65e078731f7740bd384b73617c45f776d892856810222d66eaee
+      POSTGRES_HOST: jdbc:postgresql://ec2-34-233-242-44.compute-1.amazonaws.com/db4r27qgd1238l
+
+  app1:
+    build: .
+    image: "email-confirmation.jar"
+    ports:
+      - "9001:9001"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://ec2-34-233-242-44.compute-1.amazonaws.com/db4r27qgd1238l
+      SPRING_DATASOURCE_USERNAME: hmniybqzvtmoer
+      SPRING_DATASOURCE_PASSWORD: 9219e526be9f65e078731f7740bd384b73617c45f776d892856810222d66eaee
+  app2:
+    build: .
+    image: "app.jar"
+    ports:
+      - "9002:9002"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://ec2-34-233-242-44.compute-1.amazonaws.com/db4r27qgd1238l
+      SPRING_DATASOURCE_USERNAME: hmniybqzvtmoer
+      SPRING_DATASOURCE_PASSWORD: 9219e526be9f65e078731f7740bd384b73617c45f776d892856810222d66eaee
+    depends_on:
+      - db
+      - app1
