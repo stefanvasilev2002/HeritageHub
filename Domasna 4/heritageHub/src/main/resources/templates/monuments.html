@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>
+        <th:block th:if="${category == 'historical'}" th:text="${titleHistorical}">Historical Monuments</th:block>
+        <th:block th:if="${category != 'historical'}" th:text="${titleCultural}">Cultural Monuments</th:block>
+
+    </title>
+    <link rel="stylesheet" href="/main.css">
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md">
+
+    <div class="container-xl">
+        <a href="/" class="navbar-brand">
+            <span class="fw-bold text-secondary" th:text="${navHeader}">HeritageHub</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center align-center" id="navbarNav">
+            <ul class="navbar-nav nav-tabs mr-auto ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" th:text="${navHome}">Home</a>
+                </li>
+                <li class="nav-item" th:class="${category == 'historical'} ? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/category/historical}" th:class="${category == 'historical'} ? 'nav-link active' : 'nav-link'" th:text="${navHistorical}">Historical</a>
+                </li>
+                <li class="nav-item" th:class="${category != 'historical'} ? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/category/cultural}" th:class="${category != 'historical'} ? 'nav-link active' : 'nav-link'" th:text="${navCultural}">Cultural</a>
+                </li>
+
+                <!-- Hidden "Contact" item for smaller screens -->
+                <li class="nav-item d-md-none" id="contactNavItem" style="display: none;">
+                    <a class="nav-link" href="/about-us" th:text="${navAboutUs}">About us</a>
+                </li>
+                <li class="nav-item">
+                    <div class="container mt-2 no-margin">
+                        <div class="row justify-content-start">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <a href="/mk" class="btn btn-sm btn-danger me-2">MK</a>
+                                    <span class="text-muted">|</span>
+                                    <a href="/en" class="btn btn-sm btn-primary ms-2">EN</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item d-md-none" sec:authorize="!isAuthenticated()">
+                    <a href="/login" class="btn btn-secondary mt-2" th:text="${navLogIn}" >Log In</a>
+                </li>
+                <li class="nav-item d-md-none" sec:authorize="isAuthenticated()">
+                    <a href="/logout" class="btn btn-secondary mt-2" th:text="${navLogOut}" >Log Out</a>
+                </li>
+            </ul>
+        </div>
+        <!-- "Contact" button for larger screens -->
+        <button sec:authorize="hasRole('ROLE_USER')" type="button" class="btn" data-toggle="tooltip" data-placement="bottom" th:title="${navTooltip}">
+            <i class="bi bi-exclamation-circle-fill text-danger"></i>
+        </button>
+        <a href="/about-us" class="btn btn-primary d-none d-md-block" id="contactButton" th:text="${navAboutUs}" style="margin-right: 0.7em;">About us</a>
+        <a href="/login" class="btn btn-secondary ml-2 d-none d-md-block" id="loginButton" th:text="${navLogIn}" sec:authorize="!isAuthenticated()">Log In</a>
+        <a href="/logout" class="btn btn-secondary ml-2 d-none d-md-block" id="logoutButton" th:text="${navLogOut}" sec:authorize="isAuthenticated()">Log Out</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h2 class="display-6">
+        <th:block th:if="${category == 'historical'}" th:text="${bodyHeaderHistorical}">Historical Monuments</th:block>
+        <th:block th:if="${category != 'historical'}" th:text="${bodyHeaderCultural}">Cultural Monuments</th:block>
+    </h2>
+    <div class="search mt-4 p-3 border rounded">
+        <!-- Small Screen Form -->
+        <form th:action="@{'/category/{category}/search' (category=${category})}" method="get" class="d-md-none">
+            <div class="row align-items-center">
+                <div class="col-12 mb-3">
+                    <label for="searchQueryNameSmall" class="form-label" th:text="${bodySearchByName}">Search by name</label>
+                    <input id="searchQueryNameSmall" name="searchQueryName" type="text" class="form-control">
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="searchQueryCitySmall" class="form-label" th:text="${bodySearchByCity}">Search by city</label>
+                    <input id="searchQueryCitySmall" name="searchQueryCity" type="text" class="form-control">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-dark" th:text="${bodySearchButton}"><i class="bi bi-search"></i> Search</button>
+                </div>
+                <input type="hidden" th:value="${category}" name="category">
+            </div>
+        </form>
+        <!-- Large Screen Form -->
+        <form th:action="@{'/category/{category}/search' (category=${category})}" method="get" class="d-none d-md-block">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <label for="searchQueryName" class="input-group-text" th:text="${bodySearchByName}">Search by name</label>
+                    <input id="searchQueryName" name="searchQueryName" type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="searchQueryCity" class="input-group-text" th:text="${bodySearchByCity}">Search by city</label>
+                    <input id="searchQueryCity" name="searchQueryCity" type="text" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-dark btn-block" th:text="${bodySearchButton}"><i class="bi bi-search"></i> Search</button>
+                </div>
+                <input type="hidden" th:value="${category}" name="category">
+            </div>
+        </form>
+
+
+
+    </div>
+    <div class="row">
+        <div th:each="monument : ${monuments}" class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${monument.name}"></h5>
+                    <p class="card-text" th:text="${bodyLatitude + ' ' + monument.latitude}">Latitude: <span th:text="${monument.latitude}"></span></p>
+                    <p class="card-text" th:text="${bodyLongitude + ' ' + monument.longitude}">Longitude: <span th:text="${monument.longitude}"></span></p>
+                    <p class="card-text" th:text="${bodyCity + ' ' + monument.city}">City: <span th:text="${monument.city}"></span></p>
+                    <p class="card-text" th:text="${bodyRating + ' ' + monument.getCalculatedRating()} + ' (' + ${monument.numRatings} + ')'">Rating: <span th:text="${monument.getCalculatedRating()} + ' (' + ${monument.numRatings} + ')'"></span></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a class="btn btn-primary" th:href="@{/monument/{id}(id=${monument.id})}" th:text="${bodyView}">View</a>
+                        <form th:method="POST" th:action="@{'/deleteMonument/{id}' (id=${monument.id})}" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <button class="btn btn-danger" type="submit" th:text="${bodyDelete}">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/visibilityToggle.js"></script>
+</body>
+</html>
