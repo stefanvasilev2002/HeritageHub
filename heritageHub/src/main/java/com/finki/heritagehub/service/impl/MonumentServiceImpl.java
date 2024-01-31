@@ -30,8 +30,6 @@ public class MonumentServiceImpl implements MonumentService {
         this.monumentFactory = monumentFactory;
         this.ratingService = ratingService;
         this.appUserService = appUserService;
-
-        loadMonuments();
     }
     @Override
     public List<Monument> getAllMonumentsByCategory(String category) {
